@@ -445,7 +445,7 @@ img#impresoraButton {
             
             
             // Construir el enlace de WhatsApp
-            var whatsappLink = 'https://api.whatsapp.com/send?phone=' + codigo_pais + telefono + '&text=' + encodeURIComponent(message)+'?sharelink=1';
+            var whatsappLink = 'https://api.whatsapp.com/send?phone=' + codigo_pais + telefono + '&text=' + encodeURIComponent(response)+'?sharelink=1';
             
             // Abrir una nueva ventana o pestaña para enviar el mensaje por WhatsApp
             window.open(whatsappLink, '_blank');
@@ -610,7 +610,7 @@ if (currentURL.indexOf('sharelink=1') !== -1) {
 
 async function shortURL() {
     const Url = document.getElementById("url").value;
-    const response = await fetch(`https://tinyurl.com/api-create.php?url=${encodeURIComponent(Url)}`);
+    const response = await fetch(`https://tinyurl.com/api-create.php?url=${encodeURIComponent(message)}`);
     if (response.ok) {
         const data = await response.text();
         document.getElementById('result').innerHTML = `
