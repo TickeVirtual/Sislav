@@ -596,13 +596,13 @@ if (currentURL.indexOf('sharelink=1') !== -1) {
 </script>
 //________________________________________________
 
-            <div class="container">
+   <div class="container">
             <label for="url">ACORTADOR DE URL.</label>
             <p>Genera una URL corta y redirige a<br>cuando un usuario hace clic en la URL corta</p>
-            <input  type="text" id="url"  placeholder="message" >
+            <input  type="text" id="url"  placeholder="Ingresar tu URL" >
             <button onclick="shortURL()" id="btn">Acortar Url </button>
             <div id="result"></div>
-             </div>
+    </div>
     
 
 
@@ -610,7 +610,7 @@ if (currentURL.indexOf('sharelink=1') !== -1) {
 
 async function shortURL() {
     const Url = document.getElementById("url").value;
-    const response = await fetch(`https://tinyurl.com/api-create.php?url=${encodeURIComponent(message)}`);
+    const response = await fetch(`https://tinyurl.com/api-create.php?url=${encodeURIComponent(Url)}`);
     if (response.ok) {
         const data = await response.text();
         document.getElementById('result').innerHTML = `
@@ -622,6 +622,7 @@ async function shortURL() {
 
 }
 </script>
+
 
 
          
