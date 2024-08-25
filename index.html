@@ -313,7 +313,62 @@ img#impresoraButton {
               
             };
         });
+  </script>
+
+      <script>
+
+        // Función para acortar la URL
+        async function shortenUrl(url) {
+            try {
+                let response = await fetch('https://n9.cl/api/v1/shorten', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'Authorization': 'Bearer 5bdaa9a79f750b14a0aac40bd666bc92ee662e4f'
+                    },
+                    body: JSON.stringify({ long_url: url })
+                });
+                let data = await response.json();
+                return data.short_url; // Asegúrate de que 'short_url' sea el campo correcto
+            } catch (error) {
+                console.error('Error acortando la URL:', error);
+                return url; // Retorna la URL original en caso de error
+            }
+        }
+
+        // Función para generar el enlace de WhatsApp
+        async function sendWhatsAppMessage() {
+            var currentURL = window.location.href;
+            var shortUrl = await shortenUrl(currentURL);
+
+            var message = 'Hola!! somos de la lavandería, somos una lavandería que cuida el medio ambiente ♻️♻️♻️♻️♻️, por ello adjuntamos su ticket de atención  virtual. Click en el link para ver el ticket 👇🏻👇🏻👇🏻 ' + shortUrl;
+            
+            var whatsappLink = 'https://api.whatsapp.com/send?phone=' + codigo_pais + telefono + '&text=' + encodeURIComponent(message);
+            
+            window.open(whatsappLink, '_blank');
+        }
+
+        document.getElementById('whatsappButton').addEventListener('click', sendWhatsAppMessage);
+        
+        // Función para imprimir el ticket
+        function printTicket() {
+            window.print();
+        }
+
+        document.getElementById('impresoraButton').addEventListener('click', printTicket);
+        
+        var whatsappButton = document.getElementById('whatsappButton');
+        var impresoraButton = document.getElementById('impresoraButton');
+        var currentURL = window.location.href;
+
+        if (currentURL.indexOf('sharelink=1') !== -1) {
+            whatsappButton.style.display = 'none';
+            impresoraButton.style.display = 'none';
+        }
     </script>
+
+
+
     
     <div id="header">
      <div class="button-container">
