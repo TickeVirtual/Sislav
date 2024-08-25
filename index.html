@@ -313,10 +313,6 @@ img#impresoraButton {
               
             };
         });
-
-
-
-      
     </script>
     
     <div id="header">
@@ -347,7 +343,7 @@ img#impresoraButton {
             <p class="info-tienda">
                 MAGDALENA
                 <br>
-                Telefono: 955
+                Telefono: 95555555555
                 <br>
                 -
         
@@ -432,34 +428,12 @@ img#impresoraButton {
     </script>
                 
     <script>
+   
 
-
-    // Función para acortar la URL
-    async function shortenUrl(url) {
-        try {
-            let response = await fetch('https://n9.cl/api/v1/shorten', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                    'Authorization': 'Bearer 5bdaa9a79f750b14a0aac40bd666bc92ee662e4f'
-                },
-                body: JSON.stringify({ long_url: url })
-            });
-            let data = await response.json();
-            return data.short_url; // Asegúrate de que 'short_url' sea el campo correcto
-        } catch (error) {
-            console.error('Error acortando la URL:', error);
-            return url; // Retorna la URL original en caso de error
-        }
-    }
-
-    // Función para generar el enlace de WhatsApp
-    async function sendWhatsAppMessage() {
-        var currentURL = window.location.href;
-        var shortUrl = await shortenUrl(currentURL);
-      
-
-
+       // Función para generar el enlace de WhatsApp
+        function sendWhatsAppMessage() {
+            // URL del archivo donde se encuentra insertado el botón
+            var currentURL = window.location.href;
             
             
             // Mensaje a enviar junto con el enlace
