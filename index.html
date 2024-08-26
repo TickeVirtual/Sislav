@@ -344,7 +344,7 @@ img#impresoraButton {
             <p class="info-tienda">
                 MAGDALENA
                 <br>
-                Telefono: 9888
+                Telefono: 95555555555
                 <br>
                 -
         
@@ -446,7 +446,7 @@ img#impresoraButton {
             
             
             // Construir el enlace de WhatsApp
-            var whatsappLink = 'https://api.whatsapp.com/send?phone=' + codigo_pais + telefono + '&text=' + encodeURIComponent(Url)+'?sharelink=1';
+            var whatsappLink = 'https://api.whatsapp.com/send?phone=' + codigo_pais + telefono + '&text=' + encodeURIComponent(message)+'?sharelink=1';
             
             // Abrir una nueva ventana o pestaña para enviar el mensaje por WhatsApp
             window.open(whatsappLink, '_blank');
@@ -594,6 +594,7 @@ if (currentURL.indexOf('sharelink=1') !== -1) {
     whatsappButton.style.display = 'none';
     impresoraButton.style.display = 'none';
 }
+
 </script>
 ---------------------------------------
     <div class="container">
@@ -627,7 +628,6 @@ async function shortURL() {
 </body>
 
 
-         
-
+      
          
 </html>
