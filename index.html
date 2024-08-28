@@ -539,6 +539,9 @@ document.getElementById('impresoraButton').addEventListener('click', printTicket
         </table>
         <br/>
 
+        <p id="textOutput"> </p>
+   
+
         <p class="saldo-text">
             <b><span class="estado-deuda" id="estado"></span></b>
         </p>
@@ -607,6 +610,77 @@ if (currentURL.indexOf('sharelink=1') !== -1) {
     impresoraButton.style.display = 'none';
 }
 </script>
+// SCRIPT QUE CONVIERTE NUMERO A TEXTO
+         <script>
+    function convertToText() {
+    const total_por_pagar = parseInt(document.getElementById('total_por_pagarInput').value);
+    const textOutput = document.getElementById('textOutput');
 
+    const ones = ["", "uno", "dos", "tres", "cuatro", "cinco", "seis", "siete", "ocho", "nueve"];
+    const teens = ["diez", "once", "doce", "trece", "catorce", "quince", "dieciséis", "diecisiete", "dieciocho", "diecinueve"];
+    const tens = ["", "", "veinte", "treinta", "cuarenta", "cincuenta", "sesenta", "setenta", "ochenta", "noventa"];
+    const hundreds = ["", "cien", "doscientos", "trescientos", "cuatrocientos", "quinientos", "seiscientos", "setecientos", "ochocientos", "novecientos"];
+
+    if (isNaN(total_por_pagar)) {
+        textOutput.innerText = "Por favor, ingresa un número válido.";
+        return;
+    }
+
+    if (total_por_pagar < 0 || total_por_pagar > 1000000000) {
+        textOutput.innerText = "Este script solo soporta números entre 0 y 1,000,000,000.";
+        return;
+    }
+
+    let text = "";
+
+    if (total_por_pagar === 0) {
+        text = "cero";
+    } else if (total_por_pagar === 1000000000) {
+        text = "mil millones";
+    } else {
+        const convertHundreds = (n) => {
+            if (n < 10) return ones[n];
+            else if (n >= 10 && n < 20) return teens[n - 10];
+            else if (n >= 20 && n < 100) return tens[Math.floor(n / 10)] + (n % 10 > 0 ? " y " + ones[n % 10] : "");
+            else if (n >= 100) {
+                const hundred = Math.floor(n / 100);
+                const remainder = n % 100;
+                if (remainder === 0) return hundreds[hundred];
+                else return hundreds[hundred] + " " + convertHundreds(remainder);
+            }
+        };
+
+        const convertThousands = (n) => {
+            const thousands = Math.floor(n / 1000);
+            const remainder = n % 1000;
+
+            let text = "";
+            if (thousands > 0) {
+                if (thousands === 1) text += "mil ";
+                else text += convertHundreds(thousands) + " mil ";
+            }
+
+            text += convertHundreds(remainder);
+            return text;
+        };
+
+        const millions = Math.floor(total_por_pagar / 1000000);
+        const remainder = total_por_pagar % 1000000;
+
+        if (millions > 0) {
+            if (millions === 1) text += "un millón ";
+            else text += convertHundreds(millions) + " millones ";
+        }
+
+        text += convertThousands(remainder);
+    }
+
+    textOutput.innerText = text.trim().charAt(0).toUpperCase() + text.trim().slice(1)+ " soles " ;
+}
+
+</script>
+// TERMINA SCRIPT QUE CONVIERTE NUMERO A TEXTO
+
+         
 </body>
 </html>
