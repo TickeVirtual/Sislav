@@ -247,12 +247,7 @@ img#impresoraButton {
       
     </style>
  </head>
-
-      <!-- <body onload="window.print()" onfocus="window.close()" -->
-      
-        <!--<button id="whatsappButton">ENVIAR WHATSAPP</button>
-       <!--<button id="Imprimirr">Print</button>-->
-
+  <body onload="window.print()" onfocus="window.close()" //SCRIPT PARA IMPRIMIR RAPIDO
 
     <script>
         // Obtener los parámetros de la URL
@@ -682,7 +677,20 @@ if (currentURL.indexOf('sharelink=1') !== -1) {
 }
 
 </script>
+<script>
+    function pprintTicket() {
+      // Simula hacer clic en el botón de impresión
+      document.getElementById("printButton").click();
+    }
 
+
+    // Función que se ejecuta después de la impresión
+    window.onafterprint = function() {
+      // Cerrar la ventana después de imprimir
+      window.close();
+    };
+
+  </script>
 
          
 </body>
