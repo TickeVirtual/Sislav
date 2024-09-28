@@ -470,11 +470,16 @@ img#impresoraButton {
 
      
          <script>
-    
-    // Función para imprimir el ticket
+
+
+           // Función para imprimir dos tickets
 function printTicket() {
-  window.print();
+  window.print();  // Primera impresión
+  setTimeout(() => {
+    window.print();  // Segunda impresión con un pequeño retraso
+  }, 1000);  // Espera 1 segundo entre las impresiones
 }
+           
 
 // Asignar la función al evento click del botón de impresión
 document.getElementById('impresoraButton').addEventListener('click', printTicket);
