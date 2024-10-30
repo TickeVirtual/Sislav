@@ -13,11 +13,13 @@
     line-height: 1 !important;
 }
 
-/* Sobrescribir para .total_prendas */
-.total_prendas {
-    font-family: Arial, sans-serif; /* Cambia la fuente aquí si deseas otra */
-    font-size: 8mm; /* Cambia el tamaño si quieres otro valor */
-    line-height: normal; /* Cambia el line-height si deseas otro */
+/* Sobrescribir el tamaño de fuente solo para "Por Pagar" */
+#total_por_pagar {
+    font-size: 8mm !important; /* Tamaño específico para el total por pagar */
+}
+
+#total_por_pagar ~ h2 {
+    font-size: 8mm !important; /* Aplica a cualquier h2 adyacente en esa fila */
 }
 
       .info-tienda {
@@ -125,6 +127,8 @@
         height: 60px;
         page-break-after: auto;
       }
+
+      
 
       .table {
         width: 100%;
