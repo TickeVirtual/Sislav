@@ -490,7 +490,7 @@ img#impresoraButton {
             // Acortamos la URL actual
             var shortedURL = await shortURL(currentURL);
             
-            var message = 'Hola!! somos de la lavandería Marum Clean,  adjuntamos su ticket de atención virtual. Click en el link para ver el ticket 👉🏻 ' +     
+            var message = 'Hola!! somos de la lavandería Marum Clean,  adjuntamos su ticket de atención virtual. Click en el link para ver el ticket 👇🏻 ' +     
             shortedURL;
             
             var whatsappLink = 'https://api.whatsapp.com/send?phone=' + codigo_pais + telefono + '&text=' + encodeURIComponent(message)+'?sharelink=1';
