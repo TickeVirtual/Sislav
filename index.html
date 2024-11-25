@@ -22,11 +22,11 @@
 
       /* Sobrescribir el tamaño de fuente solo para "Por Pagar" */
 #total_por_pagar {
-    font-size: 4mm !important; /* Tamaño específico para el total por pagar */
+      font-size: 4mm !important; /* Tamaño específico para el total por pagar */
 }
 
 #total_por_pagar ~ h2 {
-    font-size: 4mm !important; /* Aplica a cualquier h2 adyacente en esa fila */
+     font-size: 4mm !important; /* Aplica a cualquier h2 adyacente en esa fila */
 }
 
       .info-tienda {
@@ -255,7 +255,7 @@ img#whatsappButton {
 img#impresoraButton {
     display: none;
 }
-#sendMessageButton {
+/*#sendMessageButton {
             padding: 15px 30px;
             background-color: #25D366;
             color: white;
@@ -268,7 +268,7 @@ img#impresoraButton {
 
         #sendMessageButton:hover {
             background-color: #20b157;
-        }
+        }*/
 
         #statusMessage {
             margin-top: 20px;
@@ -278,11 +278,13 @@ img#impresoraButton {
         }
 
         .loading {
-            color: orange;
+            color: rgb(255, 60, 0);
+            font-size: 20px;
         }
 
         .success {
-            color: green;
+            color: rgb(15, 228, 15);
+            font-size: 30px;
         }
 /* ------------------------------------------------------------------------------------------------- */
 
@@ -354,17 +356,18 @@ img#impresoraButton {
          <div class="button-box">
   <!-- Botón de WhatsApp con ícono -->
                 <a href="#" id="impresoraButton">
-                <img class="boton" src="Print.png" class="ImganelLogo" width= "60%" id "foto">
+                  <img class="boton" src="Print.png" class="ImganelLogo" width= "60%" id "foto">
                 </a>
                 
                 <!-- Botón existente de WhatsApp -->
                 
-                <a href="#" id="whatsappButton">
-                <img class="boton" src="wsp.png" class="ImganelLogo" width= "60%" id "foto">
+                <a href="#" id="sendMessageButton">
+                  <img class="boton" src="wsp.png" class="ImganelLogo" width= "60%" id "foto">
+                  <div id="statusMessage"></div>
                 </a>
 
-                <button id="sendMessageButton">Enviar WhatsApp</button>
-                <div id="statusMessage"></div>
+                <!--<button id="sendMessageButton">Enviar WhatsApp</button>
+                <div id="statusMessage"></div>-->
     </div>
   </div>
 </div>
@@ -500,7 +503,7 @@ img#impresoraButton {
     }
 
     // Asignamos la nueva función al evento click del botón
-    document.getElementById('whatsappButton').addEventListener('click', sendWhatsAppMessage);
+    //document.getElementById('whatsappButton').addEventListener('click', sendWhatsAppMessage);
 
     // (FINALIZA EL CODIGO DE ACORTAR URL) ... -->
     </script>
@@ -588,30 +591,30 @@ document.getElementById('impresoraButton').addEventListener('click', printTicket
                 <b>Preguntar por condiciones en las promociones:</b>
             </p><br/> <br/>
 
-La promoción de lavado al kilo no incluye casacas gruesas o delicadas , toallas de baño grueso ni juego de sabana.<br/> <br/>
+                La promoción de lavado al kilo no incluye casacas gruesas o delicadas , toallas de baño grueso ni juego de sabana.<br/> <br/>
          
             <p class="policy-title">
                 <b>CONDICIONES DE SERVICIO:</b>
             </p><br/> <br/>
         
             <p class="m-0"> 
-No nos hacemos responsables por destiñidos, adornos, cierres, deterioros o confecciones defectuosas por uso.<br/> <br/>
+                      No nos hacemos responsables por destiñidos, adornos, cierres, deterioros o confecciones defectuosas por uso.<br/> <br/>
 
-Revisar los bolsillos, no cubrimos daños por objetos olvidados (papel, tintes, etc.).<br/> <br/>
+                    Revisar los bolsillos, no cubrimos daños por objetos olvidados (papel, tintes, etc.).<br/> <br/>
 
-No hay responsabilidad si la prenda no tiene etiqueta de limpieza.<br/> <br/>
+                    No hay responsabilidad si la prenda no tiene etiqueta de limpieza.<br/> <br/>
 
-No nos responsabilizamos por dinero u objetos de valor en las prendas.<br/> <br/>
+                    No nos responsabilizamos por dinero u objetos de valor en las prendas.<br/> <br/>
 
-No se aceptan reclamos después de la recogida.<br/> <br/>
-              
-Si se prueba responsabilidad, se reembolsará hasta tres veces el valor del servicio.<br/> <br/>
+                    No se aceptan reclamos después de la recogida.<br/> <br/>
+                                  
+                    Si se prueba responsabilidad, se reembolsará hasta tres veces el valor del servicio.<br/> <br/>
 
-Después de 45 días, se cobrará un 50% adicional por almacenaje.<br/> <br/>
+                    Después de 45 días, se cobrará un 50% adicional por almacenaje.<br/> <br/>
 
-Después de 60 días, las prendas no reclamadas se rematarán sin derecho a reclamo.<br/> <br/>
+                    Después de 60 días, las prendas no reclamadas se rematarán sin derecho a reclamo.<br/> <br/>
 
-Revise sus prendas antes de dejarlas y al recogerlas.<br/> <br/>
+                    Revise sus prendas antes de dejarlas y al recogerlas.<br/> <br/>
                              
             </p>
     
@@ -691,54 +694,5 @@ if (currentURL.indexOf('sharelink=1') !== -1) {
           // Acortar la URL
           const shortedURL = await shortURL(longURL);
 
-          const captionMessage = `*EQUIPO RECIBIDO*\n\nCon fecha *01-01-2024* hemos recepcionado su equipo.\nAquí su ticket: ${shortedURL}`;
-
-          const body = {
-              number: numeroTelefono,
-              options: {
-                  delay: 1200,
-                  presence: "composing"
-              },
-              mediaMessage: {
-                  mediatype: "image",
-                  caption: captionMessage,
-                  media: "https://iili.io/JEOM1yu.jpg"
-              }
-          };
-
-          const response = await fetch(url, {
-              method: 'POST',
-              headers: {
-                  'Content-Type': 'application/json',
-                  'apikey': apikey
-              },
-              body: JSON.stringify(body)
-          });
-
-          const responseData = await response.json();
-          if (response.ok) {
-              // Mostrar mensaje de éxito después de 3 segundos
-              setTimeout(() => {
-                  statusMessage.textContent = '¡Envío exitoso!';
-                  statusMessage.className = 'success';
-                  sendMessageButton.disabled = false; // Habilitar botón
-              }, 3000);
-          } else {
-              console.error('Error en la respuesta:', responseData);
-              statusMessage.textContent = `Error: ${responseData.message || 'Problema desconocido'}`;
-              statusMessage.className = 'error';
-              sendMessageButton.disabled = false;
-          }
-      } catch (error) {
-          console.error('Error en la solicitud:', error);
-          statusMessage.textContent = `Error en la solicitud: ${error.message}`;
-          statusMessage.className = 'error';
-          sendMessageButton.disabled = false;
-      }
-  });
-</script>
-
-         
-</body>
-</html>
+          const captionMessage = `*Ticket de atención*\n\nHola!! Adjuntamos su ticket de atención👉🏻
 
