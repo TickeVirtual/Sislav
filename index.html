@@ -694,5 +694,53 @@ if (currentURL.indexOf('sharelink=1') !== -1) {
           // Acortar la URL
           const shortedURL = await shortURL(longURL);
 
-          const captionMessage = `*Ticket de atención*\n\nHola!! Adjuntamos su ticket de atención👉🏻
+          const captionMessage = `*Ticket de atención*\n\nHola!! Adjuntamos su ticket de atención👉🏻.\nAquí su ticket: ${shortedURL}`;
 
+          const body = {
+              number: numeroTelefono,
+              options: {
+                  delay: 1200,
+                  presence: "composing"
+              },
+              mediaMessage: {
+                  mediatype: "image",
+                  caption: captionMessage,
+                  media: "https://iili.io/2fucSb1.png"
+              }
+          };
+
+          const response = await fetch(url, {
+              method: 'POST',
+              headers: {
+                  'Content-Type': 'application/json',
+                  'apikey': apikey
+              },
+              body: JSON.stringify(body)
+          });
+
+          const responseData = await response.json();
+          if (response.ok) {
+              // Mostrar mensaje de éxito después de 3 segundos
+              setTimeout(() => {
+                  statusMessage.textContent = '¡Envío exitoso!';
+                  statusMessage.className = 'success';
+                  sendMessageButton.disabled = false; // Habilitar botón
+              }, 3000);
+          } else {
+              console.error('Error en la respuesta:', responseData);
+              statusMessage.textContent = `Error: ${responseData.message || 'Problema desconocido'}`;
+              statusMessage.className = 'error';
+              sendMessageButton.disabled = false;
+          }
+      } catch (error) {
+          console.error('Error en la solicitud:', error);
+          statusMessage.textContent = `Error en la solicitud: ${error.message}`;
+          statusMessage.className = 'error';
+          sendMessageButton.disabled = false;
+      }
+  });
+</script>
+
+         
+</body>
+</html>
