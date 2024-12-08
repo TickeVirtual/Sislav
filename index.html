@@ -1,732 +1,718 @@
 <!DOCTYPE html>
-<html lang="es">
-  <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ticket de Compra</title>
-   <style>
+          <html lang="es">
+            <head>
+              <meta charset="UTF-8">
+              <meta http-equiv="X-UA-Compatible" content="IE=edge">
+              <meta name="viewport" content="width=device-width, initial-scale=1.0">
+              <title>Ticket de Compra</title>
+          <style>
 
-.m-0 {
-        margin: 0 !important;
-        font-weight: normal; /* Agrega esta línea para desactivar la negrita */
-        text-align: left;
-        font-size: 0.5mm;
-      }
-      * {
-        font-family: tahoma, Helvetica, sans-serif; /* tipo de letra de todo el ticket; */
-        font-size: 2.5mm !important;
-        line-height: 1 !important;
-      }
+                .m-0 {
+                        margin: 0 !important;
+                        font-weight: normal; /* Agrega esta línea para desactivar la negrita */
+                        text-align: left;
+                        font-size: 0.5mm;
+                      }
+                    *{
+                        font-family: tahoma, Helvetica, sans-serif; /* tipo de letra de todo el ticket; */
+                        font-size: 2.5mm !important;
+                        line-height: 1 !important;
+                      }
 
 
-      /* Sobrescribir el tamaño de fuente solo para "Por Pagar" */
-#total_por_pagar {
-      font-size: 4mm !important; /* Tamaño específico para el total por pagar */
-}
+                      /* Sobrescribir el tamaño de fuente solo para "Por Pagar" */
+                    #total_por_pagar {
+                      font-size: 4mm !important; /* Tamaño específico para el total por pagar */
+                    }
 
-#total_por_pagar ~ h2 {
-     font-size: 4mm !important; /* Aplica a cualquier h2 adyacente en esa fila */
-}
+                    #total_por_pagar ~ h2 {
+                    font-size: 4mm !important; /* Aplica a cualquier h2 adyacente en esa fila */
+                    }
 
-      .info-tienda {
-        margin-top: 0;
-        margin-bottom:0mm;
-        line-height: 4mm;
-      }
+                    .info-tienda {
+                        margin-top: 0;
+                        margin-bottom:0mm;
+                        line-height: 4mm;
+                    }
 
-      .nro_boleta {
-        margin: 0;
-        font-size: 5mm !important;
-      }
+                    .nro_boleta {
+                        margin: 0;
+                        font-size: 5mm !important;
+                    }
 
-      .fecha_recepcion {
-        margin: 0;
-      }
-      .fecha_entrega {
-        line-height: 5mm;
-        margin: 0;
-      }
+                    .fecha_recepcion {
+                        margin: 0;
+                    }
+                    .fecha_entrega {
+                        line-height: 5mm;
+                        margin: 0;
+                    }
 
-      .nombre-cliente {
-        margin: 0mm;
-        margin-top: 0;
-        font-size: 3.5mm !important;
-      }
+                    .nombre-cliente {
+                        margin: 0mm;
+                        margin-top: 0;
+                        font-size: 3.5mm !important;
+                    }
 
-      #thermal-pos {
-        box-shadow: 0 0 5mm #eee;
-        margin: 0 auto;
-        max-width: 79mm;
-        /* line-height: 6mm; */
-        padding: 0mm;
-      }
+                    #thermal-pos {
+                        box-shadow: 0 0 5mm #eee;
+                        margin: 0 auto;
+                        max-width: 79mm;
+                        /* line-height: 6mm; */
+                        padding: 0mm;
+                    }
 
-      #thermal-pos h2 {
-        font-size: 2mm;
-        line-height: 13px;
-        font-weight: normal; /* Agrega esta línea para desactivar la negrita */
-      }
-      .label {
-        margin: 0;
-      }
-         .ticket {
-    text-align: center;
-   Padding-top: 0; /* Elimina el margen superior */
-   Padding-bottom: 0; /* Elimina el margen inferior */
-   Padding-right: 0;
-   Padding-left: 0;
-    
+                    #thermal-pos h2 {
+                        font-size: 2mm;
+                        line-height: 13px;
+                        font-weight: normal; /* Agrega esta línea para desactivar la negrita */
+                    }
 
-    }
-       .fecharecep {
-    text-align: center;
-   Padding-top: 0; /* Elimina el margen superior */
-   Padding-bottom: 0; /* Elimina el margen inferior */
-   Padding-right: 0;
-   Padding-left: 0;
-    
+                    .label {
+                        margin: 0;
+                      }
 
-    }
+                    .ticket {
+                        text-align: center;
+                        Padding-top: 0; /* Elimina el margen superior */
+                        Padding-bottom: 0; /* Elimina el margen inferior */
+                        Padding-right: 0;
+                        Padding-left: 0;
+                    }
 
-      #thermal-pos .label {
-        text-align: center;
-        font-size: 2mm;
-      }
-      #thermal-pos .line {
-        text-align: center;
-        line-height: 0;
-        font-size: 1mm;
-      }
+                    .fecharecep {
+                        text-align: center;
+                        Padding-top: 0; /* Elimina el margen superior */
+                        Padding-bottom: 0; /* Elimina el margen inferior */
+                        Padding-right: 0;
+                        Padding-left: 0;
+                    }
 
-      #thermal-pos .detalles {
-        vertical-align: text-top;
-        max-width: 35mm;
-        word-wrap: break-word;
-      }
+                    #thermal-pos .label {
+                        text-align: center;
+                        font-size: 2mm;
+                    }
 
-      #thermal .listitem {
-        font-size: 2mm;
-        height: 5mm;
-      }
+                    #thermal-pos .line {
+                        text-align: center;
+                        line-height: 0;
+                        font-size: 1mm;
+                    }
 
-      #thermal-pos table {
-        font-size: 2mm;
-        height: 5mm;
-        border-collapse: collapse;
-      }
+                    #thermal-pos .detalles {
+                        vertical-align: text-top;
+                        max-width: 35mm;
+                        word-wrap: break-word;
+                    }
 
-      #thermal-pos .item {
-        max-width: 30mm;
-        font-size: 2.1mm;
-        text-align: start;
-        word-wrap: break-word;
-        font-weight: normal; /* Agrega esta línea para desactivar la negrita */
-      }
+                    #thermal .listitem {
+                        font-size: 2mm;
+                        height: 5mm;
+                    }
 
-      #thermal-pos .cantidad {
-        text-align: right;
-      }
+                    #thermal-pos table {
+                        font-size: 2mm;
+                        height: 5mm;
+                        border-collapse: collapse;
+                    }
 
-      #thermal-pos .footer {
-        margin-top: 5mm;
-        text-align: center;
-        height: 60px;
-        page-break-after: auto;
-      }
+                    #thermal-pos .item {
+                        max-width: 30mm;
+                        font-size: 2.1mm;
+                        text-align: start;
+                        word-wrap: break-word;
+                        font-weight: normal; /* Agrega esta línea para desactivar la negrita */
+                    }
 
-      .table {
-        width: 100%;
-        text-align: right;
-      }
+                    #thermal-pos .cantidad {
+                        text-align: right;
+                    }
 
-      .table-header {
-        text-align: right;
-        border-top: groove; /* Raya superior de encabezado de tabla de detalles; */
-        border-bottom: groove; /* Raya inferior de encabezado de tabla de detalles; */
-        
-        
-        
-      }
+                    #thermal-pos .footer {
+                        margin-top: 5mm;
+                        text-align: center;
+                        height: 60px;
+                        page-break-after: auto;
+                    }
 
-      .table-header h2 {
-        margin: 0;
-      }
+                    .table {
+                        width: 100%;
+                        text-align: right;
+                    }
 
-      .table-item {
-        vertical-align: top;
-      }
-      /* raya superior de SUBTOTAL; */
-      .top-line {
-        border-top: groove;
-      }
+                    .table-header {
+                        text-align: right;
+                        border-top: groove; /* Raya superior de encabezado de tabla de detalles; */
+                        border-bottom: groove; /* Raya inferior de encabezado de tabla de detalles; */ 
+                      }
 
-      .pt-2 {
-        padding-top: 2mm;
-      }
+                    .table-header h2 {
+                        margin: 0;
+                    }
 
-      .saldo-text {
-        margin: 0;
-        font-size: 15mm;
-        text-align: center;
-      } 
+                    .table-item {
+                      vertical-align: top;
+                    }
+                    /* raya superior de SUBTOTAL; */
+                    .top-line {
+                      border-top: groove;
+                    }
 
-      .table-footer {
-        vertical-align: bottom;
-        text-align: right;
-        font-size: 2mm;
-        line-height: 2mm;
-      }
+                    .pt-2 {
+                      padding-top: 2mm;
+                    }
 
-      .table-footer h2 {
-        margin: 0;
-        font-size: 2mm;
-      }
+                    .saldo-text {
+                      margin: 0;
+                      font-size: 15mm;
+                      text-align: center;
+                    } 
 
-      .estado-deuda {
-        font-size: 4mm !important;
-      }
+                    .table-footer {
+                      vertical-align: bottom;
+                      text-align: right;
+                      font-size: 2mm;
+                      line-height: 2mm;
+                    }
 
-      .info {
-        font-size: 1.6mm;
-      }
-      .info p {
-        padding-bottom: 0;
-        margin-bottom: 0;
-      }
-      
-      .align-left {
-        text-align: left;
-     }
-     
+                    .table-footer h2 {
+                      margin: 0;
+                      font-size: 2mm;
+                    }
+
+                    .estado-deuda {
+                      font-size: 4mm !important;
+                    }
+
+                    .info {
+                      font-size: 1.6mm;
+                    }
+                    .info p {
+                      padding-bottom: 0;
+                      margin-bottom: 0;
+                    }
+                    
+                    .align-left {
+                      text-align: left;
+                  }
+                    
 
 
 
-      .policy {
-        font-size: 1.5mm;
-        line-height: 3.5mm;
-        padding: 3mm;
-        padding-top: 0;
-      }
+                  .policy {
+                    font-size: 1.5mm;
+                    line-height: 3.5mm;
+                    padding: 3mm;
+                    padding-top: 0;
+                  }
 
-      .policy .policy-title {
-        text-align: center;
-        margin: 0;
-        font-weight: normal; /* Agrega esta línea para desactivar la negrita */
-        
-      }
-      
-      .align-right {
-            text-align: right;
-        }
-/* ---------------------------------------------------------------------------------------------- */
+                  .policy .policy-title {
+                    text-align: center;
+                    margin: 0;
+                    font-weight: normal; /* Agrega esta línea para desactivar la negrita */
+                    
+                  }
+                  
+                  .align-right {
+                        text-align: right;
+                    }
+                /* ---------------------------------------------------------------------------------------------- */
 
-.button-container {
-  display: flex;
-  justify-content: center; /* Centrar horizontalmente */
-}
+                .button-container {
+                  display: flex;
+                  justify-content: center; /* Centrar horizontalmente */
+                }
 
-.button-box {
-  max-width: 300px; /* Ancho máximo del contenedor */
-  display: flex;
-  justify-content: space-between; /* Espacio entre las imágenes */
-}
+                .button-box {
+                  max-width: 300px; /* Ancho máximo del contenedor */
+                  display: flex;
+                  justify-content: space-between; /* Espacio entre las imágenes */
+                }
 
-.button-box img {
-  max-width: 100%; /* Tamaño máximo de las imágenes */
-}
+                .button-box img {
+                  max-width: 100%; /* Tamaño máximo de las imágenes */
+                }
 
-/* Estilo para ocultar los botones en la versión impresa */
-  @media print {
-    #whatsappButton, #impresoraButton {
-        display: none !important;
-    }
-}
-.hidden {
-    display: none !important;
-}
+                /* Estilo para ocultar los botones en la versión impresa */
+                  @media print {
+                    #whatsappButton, #impresoraButton {
+                        display: none !important;
+                    }
+                }
+                .hidden {
+                    display: none !important;
+                }
 
-/* CSS para ocultar las imágenes de WhatsAppButton cuando sharelink=1 está presente en la URL */
-img#whatsappButton {
-    display: none;
-}
+                /* CSS para ocultar las imágenes de WhatsAppButton cuando sharelink=1 está presente en la URL */
+                img#whatsappButton {
+                    display: none;
+                }
 
-/* CSS para ocultar las imágenes de WhatsAppButton cuando sharelink=1 está presente en la URL */
-img#impresoraButton {
-    display: none;
-}
-/*#sendMessageButton {
-            padding: 15px 30px;
-            background-color: #25D366;
-            color: white;
-            border: none;
-            border-radius: 5px;
-            font-size: 18px;
-            cursor: pointer;
-            transition: background-color 0.3s ease;
-        }
+                /* CSS para ocultar las imágenes de WhatsAppButton cuando sharelink=1 está presente en la URL */
+                img#impresoraButton {
+                    display: none;
+                }
+          
+                #statusMessage {
+                    margin-top: 20px;
+                    font-size: 18px;
+                    font-weight: bold;
+                    display: none;
+                }
 
-        #sendMessageButton:hover {
-            background-color: #20b157;
-        }*/
+                .loading {
+                    color: rgb(255, 60, 0);
+                    font-size: 20px;
+                }
 
-        #statusMessage {
-            margin-top: 20px;
-            font-size: 18px;
-            font-weight: bold;
-            display: none;
-        }
+                .success {
+                    color: rgb(15, 228, 15);
+                    font-size: 30px;
+                }
+                /* ------------------------------------------------------------------------------------------------- */
 
-        .loading {
-            color: rgb(255, 60, 0);
-            font-size: 20px;
-        }
-
-        .success {
-            color: rgb(15, 228, 15);
-            font-size: 30px;
-        }
-/* ------------------------------------------------------------------------------------------------- */
-
-      
-    </style>
- </head>
+                      
+              </style>
+          </head>
 
 
-    <script>
-        // Obtener los parámetros de la URL
-        const params = new URLSearchParams(window.location.search);
+              <script>
+                  // Obtener los parámetros de la URL
+                  const params = new URLSearchParams(window.location.search);
 
-        // Obtener los valores de los parámetros
-        var nro_boleta = params.has('boleta') ? params.get('boleta') : "---";
-        var nombre_cliente = params.has('cliente') ? params.get('cliente') : "==Cliente==";
-        var telefono = params.has('telefono') ? params.get('telefono') : "==Cliente==";
-        var codigo_pais = params.has('codigo_pais') ? params.get('codigo_pais') : "+";
-        var fecha = params.has('fecha') ? params.get('fecha') : "dd/mm/aaaa hh:mm:ss";
-        var fecha_entrega = params.has('fecha_entrega') ? params.get('fecha_entrega') : "hh:mm:ss";
-        var total = params.has('total') ? params.get('total') : "";
-        var subtotal_desc = params.has('subtotal_desc') ? params.get('subtotal_desc') : " ";
-        var total_a_pagar = params.has('total_a_pagar') ? params.get('total_a_pagar') : " ";
-        var descuento = params.has('descuento') ? params.get('descuento') : " ";
-        var a_cuenta = params.has('a_cuenta') ? params.get('a_cuenta') : " ";
-        var desc_por_prenda = params.has('desc_por_prenda') ? params.get('desc_por_prenda') : " ";
-        var pagado_con = params.has('pagado_con') ? params.get('pagado_con') : "--";
-        var a_cuenta_dos = params.has('a_cuenta_dos') ? params.get('a_cuenta_dos') : " ";
-        var pagado_con_dos = params.has('pagado_con_dos') ? params.get('pagado_con_dos') : "--";
-        var porcent_desc = params.has('porcent_desc') ? params.get('porcent_desc') : " ";
-        var porcent_desc_plata = params.has('porcent_desc_plata') ? params.get('porcent_desc_plata') : " ";
-        var total_por_pagar = params.has('total_por_pagar') ? params.get('total_por_pagar') : " ";
-        var estado = params.has('estado') ? params.get('estado') : "--";
-        var total_prendas = params.has('total_prendas') ? params.get('total_prendas') : "--";
-        var cantidades = params.has('cantidades') ? params.get('cantidades') : "";
-        var descripciones = params.has('servicios') ? params.get('servicios') : "";
-        var detalle = params.has('detalles') ? params.get('detalles') : "";
-        var p_units = params.has('p_unit') ? params.get('p_unit') : "";
-        var subtotal = params.has('subtotal') ? params.get('subtotal') : "";
-        
-        //Formato de 2 decimales
-        //total = parseFloat(total).toLocaleString('es-ES', { minimumFractionDigits: 2 });
-        //descuento = parseFloat(descuento).toLocaleString('es-ES', { minimumFractionDigits: 2 });
-        //subtotal_desc = parseFloat(subtotal_desc).toLocaleString('es-ES', { minimumFractionDigits: 2 });
-        
-        //crea una lista de cada columna a partir de las comas.
-        cantidades = cantidades.split(",");
-        descripciones = descripciones.split(",");
-        detalle = detalle.split(",");
-        p_units = p_units.split(",");
+                  // Obtener los valores de los parámetros
+                  var nro_boleta = params.has('boleta') ? params.get('boleta') : "---";
+                  var nombre_cliente = params.has('cliente') ? params.get('cliente') : "==Cliente==";
+                  var telefono = params.has('telefono') ? params.get('telefono') : "==Cliente==";
+                  var codigo_pais = params.has('codigo_pais') ? params.get('codigo_pais') : "+";
+                  var fecha = params.has('fecha') ? params.get('fecha') : "dd/mm/aaaa hh:mm:ss";
+                  var fecha_entrega = params.has('fecha_entrega') ? params.get('fecha_entrega') : "hh:mm:ss";
+                  var total = params.has('total') ? params.get('total') : "";
+                  var subtotal_desc = params.has('subtotal_desc') ? params.get('subtotal_desc') : " ";
+                  var total_a_pagar = params.has('total_a_pagar') ? params.get('total_a_pagar') : " ";
+                  var descuento = params.has('descuento') ? params.get('descuento') : " ";
+                  var a_cuenta = params.has('a_cuenta') ? params.get('a_cuenta') : " ";
+                  var desc_por_prenda = params.has('desc_por_prenda') ? params.get('desc_por_prenda') : " ";
+                  var pagado_con = params.has('pagado_con') ? params.get('pagado_con') : "--";
+                  var a_cuenta_dos = params.has('a_cuenta_dos') ? params.get('a_cuenta_dos') : " ";
+                  var pagado_con_dos = params.has('pagado_con_dos') ? params.get('pagado_con_dos') : "--";
+                  var porcent_desc = params.has('porcent_desc') ? params.get('porcent_desc') : " ";
+                  var porcent_desc_plata = params.has('porcent_desc_plata') ? params.get('porcent_desc_plata') : " ";
+                  var total_por_pagar = params.has('total_por_pagar') ? params.get('total_por_pagar') : " ";
+                  var estado = params.has('estado') ? params.get('estado') : "--";
+                  var total_prendas = params.has('total_prendas') ? params.get('total_prendas') : "--";
+                  var cantidades = params.has('cantidades') ? params.get('cantidades') : "";
+                  var descripciones = params.has('servicios') ? params.get('servicios') : "";
+                  var detalle = params.has('detalles') ? params.get('detalles') : "";
+                  var p_units = params.has('p_unit') ? params.get('p_unit') : "";
+                  var subtotal = params.has('subtotal') ? params.get('subtotal') : "";
+                  
+                  //Formato de 2 decimales
+                  //total = parseFloat(total).toLocaleString('es-ES', { minimumFractionDigits: 2 });
+                  //descuento = parseFloat(descuento).toLocaleString('es-ES', { minimumFractionDigits: 2 });
+                  //subtotal_desc = parseFloat(subtotal_desc).toLocaleString('es-ES', { minimumFractionDigits: 2 });
+                  
+                  //crea una lista de cada columna a partir de las comas.
+                  cantidades = cantidades.split(",");
+                  descripciones = descripciones.split(",");
+                  detalle = detalle.split(",");
+                  p_units = p_units.split(",");
 
-        //Crea una lista para mostrar en cada fila de la tabla
-        var result = [];
-        
-        cantidades.forEach(function(value, id) {
-            result[id] = {
-                cantidad: cantidades[id],
-                descripcion: descripciones[id], // + " " + detalles[id], // Descomenta si deseas concatenar la descripción con el detalle
-                detalle: detalle[id],
-                subtotal: subtotal[id],
-                precio_unit: parseFloat(p_units[id]).toFixed(2),
+                  //Crea una lista para mostrar en cada fila de la tabla
+                  var result = [];
+                  
+                  cantidades.forEach(function(value, id) {
+                      result[id] = {
+                          cantidad: cantidades[id],
+                          descripcion: descripciones[id], // + " " + detalles[id], // Descomenta si deseas concatenar la descripción con el detalle
+                          detalle: detalle[id],
+                          subtotal: subtotal[id],
+                          precio_unit: parseFloat(p_units[id]).toFixed(2),
+                        
+                      };
+                  });
+              </script>
               
-            };
-        });
-    </script>
-    
-    <div id="header">
-     <div class="button-container">
-    <!-- Contenedor de botones -->
-         <div class="button-box">
-  <!-- Botón de WhatsApp con ícono -->
+          <div id="header">
+            <div class="button-container">
+              <!-- Contenedor de botones -->
+              <div class="button-box">
+            <!-- Botón de WhatsApp con ícono -->
                 <a href="#" id="impresoraButton">
                   <img class="boton" src="Print.png" class="ImganelLogo" width= "60%" id "foto">
                 </a>
-                
-                <!-- Botón existente de WhatsApp -->
-                
+                          
+                          <!-- Botón existente de WhatsApp -->
+                          
                 <a href="#" id="sendMessageButton">
                   <img class="boton" src="wsp.png" class="ImganelLogo" width= "60%" id "foto">
                   <div id="statusMessage"></div>
                 </a>
 
-                <!--<button id="sendMessageButton">Enviar WhatsApp</button>
-                <div id="statusMessage"></div>-->
-    </div>
-  </div>
-</div>
+                          <!--<button id="sendMessageButton">Enviar WhatsApp</button>
+                          <div id="statusMessage"></div>-->
+              </div>
+            </div>
+          </div>
 
-     <!-- Agregamos el input oculto para la URL -->
-    <input type="hidden" id="url" value="">
-    
-     <div id="thermal-pos">
-        
-        <div id="thermal-pos">
-        
-        <div class="label">
-             <img class="boton" src="ticketrdy.png" class="ImganelLogo" width= "40%" id "foto">
-            <br/>
-            <p class="info-tienda">
-                 Av mi dirección Jr Camilo Carrillo 131 //ref: Frente a la cntraloria.
-                <br>
-                Horario: Lunes a Sabado 8am a 8pm / Domingos de 9am a 3pm
-                <br>
-                 Telefono: 961100231
-        
-                <br>
+              <!-- Agregamos el input oculto para la URL -->
+          <input type="hidden" id="url" value="">
               
-          
-        </div>
-        
-        
-        <div class="ticket">
-            <b>TICKET:<br>
-            <h1 class="nro_boleta" id="nro_boleta_id" ></h1>
-         </div>
-        <div class="fecharecep">
-            <p class="fecha">
-                
+          <div id="thermal-pos">
+                  
+          <div id="thermal-pos">
+                  
+          <div class="label">
+              <img class="boton" src="ticketrdy.png" class="ImganelLogo" width= "40%" id "foto">
+                <br/>
+                    <p class="info-tienda">
+                    Av mi dirección Jr Camilo Carrillo 131 //ref: Frente a la cntraloria.
+                <br>
+                    Horario: Lunes a Sabado 8am a 8pm / Domingos de 9am a 3pm
+                <br>
+                    Telefono: 961100231
+                <br>
+          </div>
+                  
+          <!-- ESTRUCTURA DEL TICKET-->
+
+          <div class="ticket">
+              <b>TICKET:<br>
+              <h1 class="nro_boleta" id="nro_boleta_id" ></h1>
+          </div>
+          <div class="fecharecep">
+              <p class="fecha">
                 <b>FECHA RECEPCION:<br>
                 <b id="fecha"></b>
-            <br>
-            <b>CLIENTE:<br>
-            <h1 class="nombre-cliente" id="nombre_client">
-            </h1>
-        </div>
+                  <br>
+                <b>CLIENTE:<br>
+                  <h1 class="nombre-cliente" id="nombre_client">
+                </h1>
+          </div>
 
-        <div class="label">
+          <div class="label">
             <p class="fecha_entrega">
-                <b> FECHA ENTREGA: <br>
-                    <span id="fecha_entrega"></span>
-                </b>
+              <b> FECHA ENTREGA: <br>
+                <span id="fecha_entrega"></span>
+              </b>
             </p>
-        </div>
-      
-   
-   
-        <table class="table">
-            <tbody id="tablaBody">
-                <tr class="table-header">
-    <th><h2>Cant</h2></th>
-    <th><h2>Descripcion</h2></th>
-
-    <th><h2>Precio</h2></th>
-    <th><h2>Subtotal</h2></th> <!-- Nueva columna para Subtotal -->
-                 </tr>
-                <script>
-                    /*var result = [
-                        { cantidad: 3, descripcion: "Descripción 1", precio_unit: 10.50 },
-                        { cantidad: 5, descripcion: "Descripción 2", precio_unit: 20.00 },
-                        // ... otros objetos en el array
-                    ];*/
-
-                    var tablaBody = document.getElementById("tablaBody");
-
-                    result.forEach(function(row) {
-    var newRow = document.createElement("tr");
-    newRow.className = "table-item";
-
-    // Calcula el subtotal para el servicio actual
-    var subtotal = row.cantidad * parseFloat(row.precio_unit);
-    
-    newRow.innerHTML = `
-
-        
-       <td class="item" style="text-align: left;">${row.cantidad}</td>
-        <td class="item" style="text-align: left;">${row.descripcion}</td>
-
-        <td class="item" style="text-align: right;">${row.precio_unit}</td> <!-- Alinea a la derecha -->
-        <td class="item" style="text-align: right;">${subtotal.toFixed(2)}</td> <!-- Alinea a la derecha -->
-    `;
-
-    tablaBody.appendChild(newRow);
-});
-
-                document.querySelectorAll('.printbutton').forEach(function(element) {
-            element.addEventListener('click', function() {
-                /*print();*/
-            });
-        });
-        
-        /*MENSAJE DE WHATSAPP
-                    ];*/
-        
-    </script>
+          </div>
                 
-     <!-- ... (INICIA EL CODIGO DE ACORTAR URL) ... -->
+                <table class="table">
+                  <tbody id="tablaBody">
+                      <tr class="table-header">
+                        <th><h2>Cant</h2></th>
+                        <th><h2>Descripcion</h2></th>
+                        <th><h2>Precio</h2></th>
+                        <th><h2>Subtotal</h2></th> <!-- Nueva columna para Subtotal -->
+                      </tr>
+                  <!-- SCRIPT PARA CREAR EL POP UP -->
+                        <script>
+                          function abrirPopup(event, url) {
+                            event.preventDefault();
+                            window.open(url,'Ticket','width=400,height=600,scrollbars=no,resizable=no,top=100,left=100');
+                            }
+                        </script>
 
-    <script>
-    // Función para acortar la URL
-    async function shortURL(url) {
-        const response = await fetch(`https://tinyurl.com/api-create.php?url=${encodeURIComponent(url)}`);
-        if (response.ok) {
-            return await response.text();
-        } else {
-            throw new Error("Error al acortar la URL");
-        }
-    }
+                        <script>
+                          var tablaBody = document.getElementById("tablaBody");
+                              result.forEach(function(row) {
+                          var newRow = document.createElement("tr");
+                              newRow.className = "table-item";
+                                      // Calcula el subtotal para el servicio actual
+                          var subtotal = row.cantidad * parseFloat(row.precio_unit);
+                              newRow.innerHTML = `
+                                <td class="item" style="text-align: left;">${row.cantidad}</td>
+                                <td class="item" style="text-align: left;">${row.descripcion}</td>
+                                <td class="item" style="text-align: right;">${row.precio_unit}</td> <!-- Alinea a la derecha -->
+                                <td class="item" style="text-align: right;">${subtotal.toFixed(2)}</td> <!-- Alinea a la derecha -->
+                            `;
 
-    // Modificamos la función para enviar el mensaje de WhatsApp
-    async function sendWhatsAppMessage() {
-        var currentURL = window.location.href;
-        
-        try {
-            // Acortamos la URL actual
-            var shortedURL = await shortURL(currentURL);
-            
-            var message = 'Hola!! somos de la lavandería Marum Clean,  adjuntamos su ticket de atención virtual. Click en el link para ver el ticket 👇🏻 ' +     
-            shortedURL;
-            
-            var whatsappLink = 'https://api.whatsapp.com/send?phone=' + codigo_pais + telefono + '&text=' + encodeURIComponent(message)+'?sharelink=1';
-            
-            window.open(whatsappLink, '_blank');
-        } catch (error) {
-            console.error("Error al acortar la URL:", error);
-            alert("Hubo un error al acortar la URL. Por favor, intente nuevamente.");
-        }
-    }
+                            tablaBody.appendChild(newRow);
+                              });
 
-    // Asignamos la nueva función al evento click del botón
-    //document.getElementById('whatsappButton').addEventListener('click', sendWhatsAppMessage);
+                                        document.querySelectorAll('.printbutton').forEach(function(element) {
+                                    element.addEventListener('click', function() {
+                                        /*print();*/
+                                    });
+                                });
 
-    // (FINALIZA EL CODIGO DE ACORTAR URL) ... -->
-    </script>
-        
+                        </script>
+                      <!-- ... (INICIA EL CODIGO DE ACORTAR URL) ... -->
+                        <script>
+                        // Función para acortar la URL
+                        async function shortURL(url) {
+                            const response = await fetch(`https://tinyurl.com/api-create.php?url=${encodeURIComponent(url)}`);
+                            if (response.ok) {
+                                return await response.text();
+                            } else {
+                                throw new Error("Error al acortar la URL");
+                            }
+                        }
 
+                        // Modificamos la función para enviar el mensaje de WhatsApp
+                        async function sendWhatsAppMessage() {
+                            var currentURL = window.location.href;
+                            
+                            try {
+                                // Acortamos la URL actual
+                                var shortedURL = await shortURL(currentURL);
+                                
+                                var message = 'Hola!! somos de la lavandería Marum Clean,  adjuntamos su ticket de atención virtual. Click en el link para ver el ticket 👇🏻 ' +     
+                                shortedURL;
+                                
+                                var whatsappLink = 'https://api.whatsapp.com/send?phone=' + codigo_pais + telefono + '&text=' + encodeURIComponent(message)+'?sharelink=1';
+                                
+                                window.open(whatsappLink, '_blank');
+                            } catch (error) {
+                                console.error("Error al acortar la URL:", error);
+                                alert("Hubo un error al acortar la URL. Por favor, intente nuevamente.");
+                            }
+                        }
 
-     
-<script>
-    
-    // Función para imprimir el ticket
-function printTicket() {
-  window.print();
-}
+                        // Asignamos la nueva función al evento click del botón
+                        //document.getElementById('whatsappButton').addEventListener('click', sendWhatsAppMessage);
 
-// Asignar la función al evento click del botón de impresión
-document.getElementById('impresoraButton').addEventListener('click', printTicket);
-</script>
-    
-    
+                        // (FINALIZA EL CODIGO DE ACORTAR URL) ... -->
+                        </script>
 
-                <tr class="table-footer top-line">
-                    <td class="" colspan="3">Total Venta:</td>
-                    <td colspan="3"><h2 id="total"></h2></td>
-                </tr>
+                        <script>
+                            
+                            // Función para imprimir el ticket
+                        function printTicket() {
+                          window.print();
+                        }
 
-                <tr class="table-footer">
-                    <td colspan="3"><h2>Desc x prenda:</h2></td>
-                    <td colspan="3"><h2 id="desc_por_prenda"></h2></td>
-                    
-                </tr>
-                 <tr class="table-footer">
-                    <td colspan="3"><h2>Desc ticket:</h2></td>
-                    <td colspan="3"><h2 id="subtotal_desc"></h2></td>
-                    
-                </tr>
-                
-                <tr class="table-footer">
-                    <td colspan="3"><h2>A cuenta 1:</h2></td>
-                    <td colspan="3"><h2 id="a_cuenta"></h2></td>
-                    
-                </tr>
-                    <tr class="table-footer">
-                    <td colspan="3"><h2>A cuenta 2:</h2></td>
-                    <td colspan="3"><h2 id="a_cuenta_dos"></h2></td>  
-             
-                </tr>
-                
-                <tr class="table-footer">
-                    <td colspan="3"><h2>Por Pagar</h2></td>
-                    <td colspan="3"><h2 id="total_por_pagar"></h2></td>
-                </tr>
-                
-                 
-                
-                <tr class="table-footer">
-                    <td colspan="3"><h2 id=0></h2></td>
-                    <td colspan="3"><h2 id="porcent_desc_plata"></h2></td>
+                        // Asignar la función al evento click del botón de impresión
+                        document.getElementById('impresoraButton').addEventListener('click', printTicket);
+                        </script>
+                            
+                      
 
-                </tr>
-                
-                 <tr class="table-footer">
-                    <td colspan="3"><h2></h2></td>
-                    <td colspan="3"><h2 id="porcent_desc_plata"></h2></td>
-                </tr>
-                
-                
-            </tbody>
-        </table>
-        <br/>
+                                  <tr class="table-footer top-line">
+                                      <td class="" colspan="3">Total Venta:</td>
+                                      <td colspan="3"><h2 id="total"></h2></td>
+                                  </tr>
 
-        <p id="textOutput"> </p>
-   
+                                  <tr class="table-footer">
+                                      <td colspan="3"><h2>Desc x prenda:</h2></td>
+                                      <td colspan="3"><h2 id="desc_por_prenda"></h2></td>
+                                      
+                                  </tr>
+                                  <tr class="table-footer">
+                                      <td colspan="3"><h2>Desc ticket:</h2></td>
+                                      <td colspan="3"><h2 id="subtotal_desc"></h2></td>
+                                      
+                                  </tr>
+                                  
+                                  <tr class="table-footer">
+                                      <td colspan="3"><h2>A cuenta 1:</h2></td>
+                                      <td colspan="3"><h2 id="a_cuenta"></h2></td>
+                                      
+                                  </tr>
+                                      <tr class="table-footer">
+                                      <td colspan="3"><h2>A cuenta 2:</h2></td>
+                                      <td colspan="3"><h2 id="a_cuenta_dos"></h2></td>  
+                                  </tr>
+                                  
+                                  <tr class="table-footer">
+                                      <td colspan="3"><h2>Por Pagar</h2></td>
+                                      <td colspan="3"><h2 id="total_por_pagar"></h2></td>
+                                  </tr>
+                                                  
+                                  <tr class="table-footer">
+                                      <td colspan="3"><h2 id=0></h2></td>
+                                      <td colspan="3"><h2 id="porcent_desc_plata"></h2></td>
 
-        <p class="saldo-text">
-            <b><span class="estado-deuda" id="estado"></span></b>
-        </p>
-        <br/>
-        <p class="prendas:">
-            <b><span class="total_prendas" id="total_prendas"></span></b>
-        </p>
+                                  </tr>
+                                  
+                                  <tr class="table-footer">
+                                      <td colspan="3"><h2></h2></td>
+                                      <td colspan="3"><h2 id="porcent_desc_plata"></h2></td>
+                                  </tr>
+                                  
+                                
+                </table>
+                          <br/>
 
-       <div class="policy">
+                          <p id="textOutput"> </p>
+                          <p class="saldo-text">
+                              <b><span class="estado-deuda" id="estado"></span></b>
+                          </p>
+                          <br/>
+                          <p class="prendas:">
+                              <b><span class="total_prendas" id="total_prendas"></span></b>
+                          </p>
+                        <div class="policy">
 
-            <p class="policy-title">
-                <b>Preguntar por condiciones en las promociones:</b>
-            </p><br/> <br/>
+                              <p class="policy-title">
+                                  <b>Preguntar por condiciones en las promociones:</b>
+                              </p><br/> <br/>
 
-                La promoción de lavado al kilo no incluye casacas gruesas o delicadas , toallas de baño grueso ni juego de sabana.<br/> <br/>
-         
-            <p class="policy-title">
-                <b>CONDICIONES DE SERVICIO:</b>
-            </p><br/> <br/>
-        
-            <p class="m-0"> 
-                      No nos hacemos responsables por destiñidos, adornos, cierres, deterioros o confecciones defectuosas por uso.<br/> <br/>
+                                  La promoción de lavado al kilo no incluye casacas gruesas o delicadas , toallas de baño grueso ni juego de sabana.<br/> <br/>
+                              <p class="policy-title">
+                                  <b>CONDICIONES DE SERVICIO:</b>
+                              </p><br/> <br/>
+                          
+                              <p class="m-0"> 
+                                        No nos hacemos responsables por destiñidos, adornos, cierres, deterioros o confecciones defectuosas por uso.<br/> <br/>
+                              </p>
+                      
+                          <div class="policy">
+                              <p class="policy-title">
+                                  <b>GRACIAS POR SU PREFERENCIA!!</b> <br/> <br/>
+                                <b>PROXIMAMENTE AGENTE BCP!!</b> <br/> <br/>
+                              </p>
+                      </div>
+                      <script>
+                          var nroBoletaElement = document.getElementById("nro_boleta_id").textContent = nro_boleta;
+                          var fechaElement = document.getElementById("fecha").textContent = fecha;
+                          var nombre_clientElement = document.getElementById("nombre_client").textContent = nombre_cliente;
+                          var fecha_entregaElement = document.getElementById("fecha_entrega").textContent = fecha_entrega;
+                          var totalElement = document.getElementById("total");totalElement.textContent = parseFloat(total).toFixed(2);
+                          var subtotal_descElement = document.getElementById("subtotal_desc");subtotal_descElement.textContent = parseFloat(subtotal_desc).toFixed(2);
+                          var desc_por_prendaElement = document.getElementById("desc_por_prenda");desc_por_prendaElement.textContent = parseFloat(desc_por_prenda).toFixed(2);
+                          var a_cuentaElement = document.getElementById("a_cuenta");a_cuentaElement.textContent = parseFloat(a_cuenta).toFixed(2);
+                          var a_cuenta_dosElement = document.getElementById("a_cuenta_dos"); a_cuenta_dosElement.textContent = parseFloat(a_cuenta_dos).toFixed(2);
+                          var total_por_pagarElement = document.getElementById("total_por_pagar");total_por_pagarElement.textContent = parseFloat(total_por_pagar).toFixed(2);
+                          //var porcent_descElement = document.getElementById("porcent_desc").textContent = porcent_desc;
+                          //var porcent_desc_plataElement = document.getElementById("porcent_desc_plata").textContent = porcent_desc_plata;
+                          var estadoElement = document.getElementById("estado").textContent = estado;
+                          var total_prendasElement = document.getElementById("total_prendas").textContent = total_prendas;
+                      </script>   
 
+                      <script>
+                      // Obtén el botón de WhatsApp por su ID
+                      var whatsappButton = document.getElementById('whatsappButton');
+                      var impresoraButton = document.getElementById('impresoraButton');
 
-                             
-            </p>
-    
-        <div class="policy">
-            <p class="policy-title">
-                <b>GRACIAS POR SU PREFERENCIA!!</b> <br/> <br/>
-              <b>PROXIMAMENTE AGENTE BCP!!</b> <br/> <br/>
-            </p>
-    </div>
-    <script>
-        var nroBoletaElement = document.getElementById("nro_boleta_id").textContent = nro_boleta;
-        var fechaElement = document.getElementById("fecha").textContent = fecha;
-        var nombre_clientElement = document.getElementById("nombre_client").textContent = nombre_cliente;
-        var fecha_entregaElement = document.getElementById("fecha_entrega").textContent = fecha_entrega;
-        
+                      // Obtén la URL actual
+                      var currentURL = window.location.href;
 
-        var totalElement = document.getElementById("total");totalElement.textContent = parseFloat(total).toFixed(2);
-        var subtotal_descElement = document.getElementById("subtotal_desc");subtotal_descElement.textContent = parseFloat(subtotal_desc).toFixed(2);
-        var desc_por_prendaElement = document.getElementById("desc_por_prenda");desc_por_prendaElement.textContent = parseFloat(desc_por_prenda).toFixed(2);
+                      // Verifica si la URL contiene "sharelink=1" y oculta el botón si es así
+                      if (currentURL.indexOf('sharelink=1') !== -1) {
+                          whatsappButton.style.display = 'none';
+                          impresoraButton.style.display = 'none';
+                      }
+                      </script>
 
-        var a_cuentaElement = document.getElementById("a_cuenta");a_cuentaElement.textContent = parseFloat(a_cuenta).toFixed(2);
-        var a_cuenta_dosElement = document.getElementById("a_cuenta_dos"); a_cuenta_dosElement.textContent = parseFloat(a_cuenta_dos).toFixed(2);
+                        <script>
+                          // Función para acortar la URL
+                          async function shortURL(url) {
+                              const response = await fetch(`https://tinyurl.com/api-create.php?url=${encodeURIComponent(url)}`);
+                              if (response.ok) {
+                                  return await response.text();
+                              } else {
+                                  throw new Error("Error al acortar la URL");
+                              }
+                          }
 
+                          document.getElementById('sendMessageButton').addEventListener('click', async function () {
+                              const statusMessage = document.getElementById('statusMessage');
+                              const sendMessageButton = document.getElementById('sendMessageButton');
 
-        var total_por_pagarElement = document.getElementById("total_por_pagar");total_por_pagarElement.textContent = parseFloat(total_por_pagar).toFixed(2);
-        //var porcent_descElement = document.getElementById("porcent_desc").textContent = porcent_desc;
-        //var porcent_desc_plataElement = document.getElementById("porcent_desc_plata").textContent = porcent_desc_plata;
-           
-        
-        var estadoElement = document.getElementById("estado").textContent = estado;
-        var total_prendasElement = document.getElementById("total_prendas").textContent = total_prendas;
-      </script>   
+                              // Mostrar mensaje de carga
+                              statusMessage.style.display = 'block';
+                              statusMessage.textContent = 'Enviando mensaje...';
+                              statusMessage.className = 'loading';
 
-<script>
-// Obtén el botón de WhatsApp por su ID
-var whatsappButton = document.getElementById('whatsappButton');
-var impresoraButton = document.getElementById('impresoraButton');
+                              sendMessageButton.disabled = true; // Deshabilitar botón mientras se envía
 
-// Obtén la URL actual
-var currentURL = window.location.href;
+                              const url = 'https://api.appsparapymes.com/message/sendMedia/jhon1310'; // Cambia NOMBRE_INSTANCIA
+                              const apikey = 'dznru31zjdjp72id8i92rh'; // Coloca aquí tu API key
+                              const numeroTelefono = '51931200353'; // Coloca el número de teléfono del destinatario
+                              const longURL = window.location.href; // Obtiene la URL actual
 
-// Verifica si la URL contiene "sharelink=1" y oculta el botón si es así
-if (currentURL.indexOf('sharelink=1') !== -1) {
-    whatsappButton.style.display = 'none';
-    impresoraButton.style.display = 'none';
-}
-</script>
+                              try {
+                                  // Acortar la URL
+                                  const shortedURL = await shortURL(longURL);
 
-<script>
-  // Función para acortar la URL
-  async function shortURL(url) {
-      const response = await fetch(`https://tinyurl.com/api-create.php?url=${encodeURIComponent(url)}`);
-      if (response.ok) {
-          return await response.text();
-      } else {
-          throw new Error("Error al acortar la URL");
-      }
-  }
+                                  const captionMessage = `*Ticket de atención*\n\nHola!! Adjuntamos su ticket de atención👉🏻.\nAquí su ticket: ${shortedURL}`;
 
-  document.getElementById('sendMessageButton').addEventListener('click', async function () {
-      const statusMessage = document.getElementById('statusMessage');
-      const sendMessageButton = document.getElementById('sendMessageButton');
+                                  const body = {
+                                      number: numeroTelefono,
+                                      options: {
+                                          delay: 1200,
+                                          presence: "composing"
+                                      },
+                                      mediaMessage: {
+                                          mediatype: "image",
+                                          caption: captionMessage,
+                                          media: "https://iili.io/2aLNHDg.png"
+                                      }
+                                  };
 
-      // Mostrar mensaje de carga
-      statusMessage.style.display = 'block';
-      statusMessage.textContent = 'Enviando mensaje...';
-      statusMessage.className = 'loading';
+                                  const response = await fetch(url, {
+                                      method: 'POST',
+                                      headers: {
+                                          'Content-Type': 'application/json',
+                                          'apikey': apikey
+                                      },
+                                      body: JSON.stringify(body)
+                                  });
 
-      sendMessageButton.disabled = true; // Deshabilitar botón mientras se envía
+                                  const responseData = await response.json();
+                                  if (response.ok) {
+                                      // Mostrar mensaje de éxito después de 3 segundos
+                                      setTimeout(() => {
+                                          statusMessage.textContent = '¡Envío exitoso!';
+                                          statusMessage.className = 'success';
+                                          sendMessageButton.disabled = false; // Habilitar botón
+                                      }, 3000);
+                                  } else {
+                                      console.error('Error en la respuesta:', responseData);
+                                      statusMessage.textContent = `Error: ${responseData.message || 'Problema desconocido'}`;
+                                      statusMessage.className = 'error';
+                                      sendMessageButton.disabled = false;
+                                  }
+                              } catch (error) {
+                                  console.error('Error en la solicitud:', error);
+                                  statusMessage.textContent = `Error en la solicitud: ${error.message}`;
+                                  statusMessage.className = 'error';
+                                  sendMessageButton.disabled = false;
+                              }
+                          });
+                        </script>
 
-      const url = 'https://api.appsparapymes.com/message/sendMedia/jhon1310'; // Cambia NOMBRE_INSTANCIA
-      const apikey = 'dznru31zjdjp72id8i92rh'; // Coloca aquí tu API key
-      const numeroTelefono = '51931200353'; // Coloca el número de teléfono del destinatario
-      const longURL = window.location.href; // Obtiene la URL actual
+                        <script>
+                          // Abrir ventana emergente para mostrar el ticket y cerrarla al cargar
+                          function abrirTicketPopup() {
+                              const ticketContent = `
+                                  <!DOCTYPE html>
+                                  <html lang="es">
+                                  <head>
+                                      <meta charset="UTF-8">
+                                      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+                                      <title>Ticket</title>
+                                      <style>${document.querySelector('style').innerHTML}</style>
+                                  </head>
+                                  <body>${document.body.innerHTML}</body>
+                                  </html>
+                              `;
 
-      try {
-          // Acortar la URL
-          const shortedURL = await shortURL(longURL);
+                              // Crear la ventana emergente con un tamaño predefinido
+                              const popupWindow = window.open('', '_blank', 'width=400,height=600,scrollbars=yes,resizable=yes');
 
-          const captionMessage = `*Ticket de atención*\n\nHola!! Adjuntamos su ticket de atención👉🏻.\nAquí su ticket: ${shortedURL}`;
+                              // Calcular la posición para centrarla
+                              const width = 600;
+                              const height = 800;
+                              const left = (window.innerWidth - width) / 2;
+                              const top = (window.innerHeight - height) / 2;
 
-          const body = {
-              number: numeroTelefono,
-              options: {
-                  delay: 1200,
-                  presence: "composing"
-              },
-              mediaMessage: {
-                  mediatype: "image",
-                  caption: captionMessage,
-                  media: "https://iili.io/2aLNHDg.png"
-              }
-          };
+                              // Configurar la posición y tamaño de la ventana emergente
+                              popupWindow.resizeTo(width, height);
+                              popupWindow.moveTo(left, top);
 
-          const response = await fetch(url, {
-              method: 'POST',
-              headers: {
-                  'Content-Type': 'application/json',
-                  'apikey': apikey
-              },
-              body: JSON.stringify(body)
-          });
+                              // Escribir el contenido HTML en la ventana emergente
+                              popupWindow.document.write(ticketContent);
+                              popupWindow.document.close();
 
-          const responseData = await response.json();
-          if (response.ok) {
-              // Mostrar mensaje de éxito después de 3 segundos
-              setTimeout(() => {
-                  statusMessage.textContent = '¡Envío exitoso!';
-                  statusMessage.className = 'success';
-                  sendMessageButton.disabled = false; // Habilitar botón
-              }, 3000);
-          } else {
-              console.error('Error en la respuesta:', responseData);
-              statusMessage.textContent = `Error: ${responseData.message || 'Problema desconocido'}`;
-              statusMessage.className = 'error';
-              sendMessageButton.disabled = false;
-          }
-      } catch (error) {
-          console.error('Error en la solicitud:', error);
-          statusMessage.textContent = `Error en la solicitud: ${error.message}`;
-          statusMessage.className = 'error';
-          sendMessageButton.disabled = false;
-      }
-  });
-</script>
+                              // Cerrar la ventana principal
+                              window.close();
+                          }
 
-         
-</body>
+                          // Ejecutar la función inmediatamente al cargar la página
+                          window.onload = abrirTicketPopup;
+                        </script>
+              </body>
 </html>
