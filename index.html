@@ -235,7 +235,7 @@
 
                 /* Estilo para ocultar los botones en la versión impresa */
                   @media print {
-                    #whatsappButton, #impresoraButton {
+                    #sendMessageButton, #impresoraButton {
                         display: none !important;
                     }
                 }
@@ -244,7 +244,7 @@
                 }
 
                 /* CSS para ocultar las imágenes de WhatsAppButton cuando sharelink=1 está presente en la URL */
-                img#whatsappButton {
+                img#sendMessageButton {
                     display: none;
                 }
 
@@ -591,7 +591,7 @@
 
                       // Verifica si la URL contiene "sharelink=1" y oculta el botón si es así
                       if (currentURL.indexOf('sharelink=1') !== -1) {
-                          whatsappButton.style.display = 'none';
+                          sendMessageButton.style.display = 'none';
                           impresoraButton.style.display = 'none';
                       }
                       </script>
@@ -716,3 +716,4 @@
                         </script>
               </body>
 </html>
+
