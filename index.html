@@ -458,7 +458,7 @@
                                 // Acortamos la URL actual
                                 var shortedURL = await shortURL(currentURL);
                                 
-                                var message = 'Hola!! somos de la lavandería Marum Clean,  adjuntamos su ticket de atención virtual. Click en el link para ver el ticket 👇🏻 ' +     
+                                var message = 'Hola!! somos de la lavandería ,  adjuntamos su ticket de atención virtual. Click en el link para ver el ticket 👇 ' +     
                                 shortedURL;
                                 
                                 var whatsappLink = 'https://api.whatsapp.com/send?phone=' + codigo_pais + telefono + '&text=' + encodeURIComponent(message)+'?sharelink=1';
@@ -673,6 +673,20 @@
                               }
                           });
                         </script>
+                        <script>
+                              // Obtén el botón de WhatsApp por su ID
+                              var whatsappButton = document.getElementById('whatsappButton');
+                              var impresoraButton = document.getElementById('impresoraButton');
+                              
+                              // Obtén la URL actual
+                              var currentURL = window.location.href;
+                              
+                              // Verifica si la URL contiene "sharelink=1" y oculta el botón si es así
+                              if (currentURL.indexOf('sharelink=1') !== -1) {
+                                  whatsappButton.style.display = 'none';
+                                  impresoraButton.style.display = 'none';
+                              }
+                       </script>          
 
                         <script>
                           // Abrir ventana emergente para mostrar el ticket y cerrarla al cargar
