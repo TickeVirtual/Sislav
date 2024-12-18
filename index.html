@@ -288,7 +288,6 @@
                   var fecha = params.has('fecha') ? params.get('fecha') : "dd/mm/aaaa hh:mm:ss";
                   var fecha_entrega = params.has('fecha_entrega') ? params.get('fecha_entrega') : "hh:mm:ss";
                   var total = params.has('total') ? params.get('total') : "";
-                  var subtotal_desc = params.has('subtotal_desc') ? params.get('subtotal_desc') : " ";
                   var total_a_pagar = params.has('total_a_pagar') ? params.get('total_a_pagar') : " ";
                   var descuento = params.has('descuento') ? params.get('descuento') :  '0.00';
                   var a_cuenta = params.has('a_cuenta') ? params.get('a_cuenta') : " ";
@@ -501,11 +500,6 @@
                                       <td colspan="3"><h2 id="descuento"></h2></td>
                                       
                                   </tr>
-                                  <tr class="table-footer">
-                                      <td colspan="3"><h2>Desc ticket:</h2></td>
-                                      <td colspan="3"><h2 id="subtotal_desc"></h2></td>
-                                      
-                                  </tr>
                                   
                                   <tr class="table-footer">
                                       <td colspan="3"><h2>Pago#1:</h2></td>
@@ -572,7 +566,6 @@
                           var nombre_clientElement = document.getElementById("nombre_client").textContent = nombre_cliente;
                           var fecha_entregaElement = document.getElementById("fecha_entrega").textContent = fecha_entrega;
                           var totalElement = document.getElementById("total");totalElement.textContent = parseFloat(total).toFixed(2);
-                          var subtotal_descElement = document.getElementById("subtotal_desc");subtotal_descElement.textContent = parseFloat(subtotal_desc).toFixed(2);
                           var descuentoElement = document.getElementById("descuento");descuentoElement.textContent = parseFloat(descuento).toFixed(2);
                           var a_cuentaElement = document.getElementById("a_cuenta");a_cuentaElement.textContent = parseFloat(a_cuenta).toFixed(2);
                           var a_cuenta_dosElement = document.getElementById("a_cuenta_dos"); a_cuenta_dosElement.textContent = parseFloat(a_cuenta_dos).toFixed(2);
