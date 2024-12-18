@@ -290,7 +290,7 @@
                   var total = params.has('total') ? params.get('total') : "";
                   var subtotal_desc = params.has('subtotal_desc') ? params.get('subtotal_desc') : " ";
                   var total_a_pagar = params.has('total_a_pagar') ? params.get('total_a_pagar') : " ";
-                  var descuento = params.has('descuento') ? params.get('descuento') : " ";
+                  var descuento = params.has('descuento') ? params.get('descuento') :  '0.00';
                   var a_cuenta = params.has('a_cuenta') ? params.get('a_cuenta') : " ";
                   var desc_por_prenda = params.has('desc_por_prenda') ? params.get('desc_por_prenda') : " ";
                   var pagado_con = params.has('pagado_con') ? params.get('pagado_con') : "--";
@@ -301,6 +301,8 @@
                   var total_por_pagar = params.has('total_por_pagar') ? params.get('total_por_pagar') : " ";
                   var estado = params.has('estado') ? params.get('estado') : "--";
                   var total_prendas = params.has('total_prendas') ? params.get('total_prendas') : "--";
+
+                        
                   var cantidades = params.has('cantidades') ? params.get('cantidades') : "";
                   var descripciones = params.has('servicios') ? params.get('servicios') : "";
                   var detalle = params.has('detalles') ? params.get('detalles') : "";
@@ -496,7 +498,7 @@
 
                                   <tr class="table-footer">
                                       <td colspan="3"><h2>Descuento:</h2></td>
-                                      <td colspan="3"><h2 id="desc_por_prenda"></h2></td>
+                                      <td colspan="3"><h2 id="descuento"></h2></td>
                                       
                                   </tr>
                                   <tr class="table-footer">
@@ -571,7 +573,7 @@
                           var fecha_entregaElement = document.getElementById("fecha_entrega").textContent = fecha_entrega;
                           var totalElement = document.getElementById("total");totalElement.textContent = parseFloat(total).toFixed(2);
                           var subtotal_descElement = document.getElementById("subtotal_desc");subtotal_descElement.textContent = parseFloat(subtotal_desc).toFixed(2);
-                          var desc_por_prendaElement = document.getElementById("desc_por_prenda");desc_por_prendaElement.textContent = parseFloat(desc_por_prenda).toFixed(2);
+                          var descuentoElement = document.getElementById("descuento");descuentoElement.textContent = parseFloat(descuento).toFixed(2);
                           var a_cuentaElement = document.getElementById("a_cuenta");a_cuentaElement.textContent = parseFloat(a_cuenta).toFixed(2);
                           var a_cuenta_dosElement = document.getElementById("a_cuenta_dos"); a_cuenta_dosElement.textContent = parseFloat(a_cuenta_dos).toFixed(2);
                           var total_por_pagarElement = document.getElementById("total_por_pagar");total_por_pagarElement.textContent = parseFloat(total_por_pagar).toFixed(2);
@@ -687,8 +689,8 @@
                                   impresoraButton.style.display = 'none';
                               }
                        </script>          
-
-                        <script>
+//comentado
+                       <!--  <script>
                           // Abrir ventana emergente para mostrar el ticket y cerrarla al cargar
                           function abrirTicketPopup() {
                               const ticketContent = `
@@ -727,7 +729,7 @@
 
                           // Ejecutar la función inmediatamente al cargar la página
                           window.onload = abrirTicketPopup;
-                        </script>
+                        </script> -->
               </body>
 </html>
 
