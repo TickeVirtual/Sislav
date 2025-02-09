@@ -592,123 +592,129 @@
                       }
                       </script>
 
-                    <script>
-                                  // Función para acortar la URL
-                                  async function shortURL(url) {
-                                      const response = await fetch(`https://tinyurl.com/api-create.php?url=${encodeURIComponent(url)}`);
-                                      if (response.ok) {
-                                          return await response.text();
-                                      } else {
-                                          throw new Error("Error al acortar la URL");
-                                      }
-                                  }
-                              
-                                  // Lista de mensajes predefinidos
-                                  const mensajes = [
-                                      "Hola! Enviamos su ticket de atención: {link}",
-                                      "Saludos! adjuntamos su ticket de atención: {link}",
-                                      "Estimado usuario!! , adjuntamos su ticket: {link}",
-                                      "Buen día! enviamos su nota de atenciión: {link}",
-                                      "Estimado cliente, su ticket está disponible en el siguiente link: {link}",
-                                      "Hola! en el siguiente lin podra visualizar su ticket de venta: {link}",
-                                      "Saludos! para verificar su ticket, clik en el siguiente link: {link}",
-                                      "Hola, adjuntamos el ticket de atención por el sevicio: {link}",
-                                      "Estimado usuario , en el siguiente link podra encontrar su ticket: {link}",
-                                      "Hola! para revisar el detalle de su ticket , clik en el siguiente link: {link}"
-                                  ];
-                              
-                                  document.getElementById('sendMessageButton').addEventListener('click', async function () {
-                                      const statusMessage = document.getElementById('statusMessage');
-                                      const sendMessageButton = document.getElementById('sendMessageButton');
-                              
-                                      // Mostrar mensaje de carga
-                                      statusMessage.style.display = 'block';
-                                      statusMessage.textContent = 'Enviando mensaje...';
-                                      statusMessage.className = 'loading';
-                              
-                                      sendMessageButton.disabled = true; // Deshabilitar botón mientras se envía
-                              
-                                      const url = 'https://api.appsparapymes.com/message/sendMedia/jhon1310'; // Cambia NOMBRE_INSTANCIA
-                                      const apikey = 'dznru31zjdjp72id8i92rh'; // Coloca aquí tu API key
-                                      const numeroTelefono = `+51${telefono}`; // Coloca el número de teléfono del destinatario
-                                      const longURL = window.location.href; // Obtiene la URL actual
-                              
-                                      try {
-                                          // Acortar la URL
-                                          const shortedURL = await shortURL(longURL);
-                              
-                                          // Obtener la hora, minuto y segundo actuales
-                                          const ahora = new Date();
-                                          const hora = ahora.getHours();
-                                          const minuto = ahora.getMinutes();
-                                          const segundo = ahora.getSeconds();
-                              
-                                          // Calcular índice del mensaje usando hora, minuto y segundo
-                                          const index = (hora + minuto + segundo) % mensajes.length;
-                              
-                                          // Generar el mensaje final
-                                          const captionMessage = `*Ticket de atención*\n\n${mensajes[index].replace("{link}", shortedURL)}`;
-                              
-                                          const body = {
-                                              number: numeroTelefono,
-                                              options: {
-                                                  delay: 1200,
-                                                  presence: "composing"
-                                              },
-                                              mediaMessage: {
-                                                  mediatype: "image",
-                                                  caption: captionMessage,
-                                                  media: "https://iili.io/2aLNHDg.png"
-                                              }
-                                          };
-                              
-                                          const response = await fetch(url, {
-                                              method: 'POST',
-                                              headers: {
-                                                  'Content-Type': 'application/json',
-                                                  'apikey': apikey
-                                              },
-                                              body: JSON.stringify(body)
-                                          });
-                              
-                                          const responseData = await response.json();
-                                          console.log('Respuesta de la API:', responseData);
-                              
-                                          if (response.ok) {
-                                              // Mostrar mensaje de éxito después de 3 segundos
-                                              setTimeout(() => {
-                                                  statusMessage.textContent = '¡Envío exitoso!';
-                                                  statusMessage.className = 'success';
-                                                  sendMessageButton.disabled = false; // Habilitar botón
-                                              }, 3000);
-                                          } else {
-                                              console.error('Error en la respuesta:', responseData);
-                                              statusMessage.textContent = `Error: ${responseData.message || 'Problema desconocido'}`;
-                                              statusMessage.className = 'error';
-                                              sendMessageButton.disabled = false;
-                                          }
-                                      } catch (error) {
-                                          console.error('Error en la solicitud:', error);
-                                          statusMessage.textContent = `Error en la solicitud: ${error.message}`;
-                                          statusMessage.className = 'error';
-                                          sendMessageButton.disabled = false;
-                                      }
-                                  });
-                              </script>
-                              
-                              <script>
-                                  // Ocultar botones si la URL contiene "sharelink=1"
-                                  var whatsappButton = document.getElementById('whatsappButton');
-                                  var impresoraButton = document.getElementById('impresoraButton');
-                                  var currentURL = window.location.href;
-                              
-                                  if (currentURL.indexOf('sharelink=1') !== -1) {
-                                      whatsappButton.style.display = 'none';
-                                      impresoraButton.style.display = 'none';
-                                  }
-                              
-                                  console.log(`Teléfono obtenido: ${telefono}`);
-          </script>
+                   <script>
+    // Función para acortar la URL
+    async function shortURL(url) {
+        const response = await fetch(`https://tinyurl.com/api-create.php?url=${encodeURIComponent(url)}`);
+        if (response.ok) {
+            return await response.text();
+        } else {
+            throw new Error("Error al acortar la URL");
+        }
+    }
+
+    // Lista de mensajes predefinidos
+    const mensajes = [
+        "Hola! Aquí tienes tu ticket de atención: {link}",
+        "Saludos! Este es tu ticket de atención: {link}",
+        "Hola!! SISTEMA ULTRA, adjuntamos tu ticket: {link}",
+        "Buen día! Aquí está tu ticket de soporte: {link}",
+        "Estimado cliente, su ticket está disponible aquí: {link}",
+        "Hola! Aquí tienes tu soporte: {link}",
+        "Saludos! Verifica tu ticket aquí: {link}",
+        "Hola, este es el ticket de atención que solicitaste: {link}",
+        "Aquí está tu ticket de ayuda: {link}",
+        "Hola! Revisa tu ticket aquí: {link}"
+    ];
+
+    document.getElementById('sendMessageButton').addEventListener('click', async function () {
+        const statusMessage = document.getElementById('statusMessage');
+        const sendMessageButton = document.getElementById('sendMessageButton');
+        const whatsappButton = document.getElementById('whatsappButton');
+
+        // Mostrar mensaje de carga
+        statusMessage.style.display = 'block';
+        statusMessage.textContent = 'Enviando mensaje...';
+        statusMessage.className = 'loading';
+
+        sendMessageButton.disabled = true; // Deshabilitar botón mientras se envía
+
+        const url = 'https://api.appsparapymes.com/message/sendMedia/jhon1310'; // Cambia NOMBRE_INSTANCIA
+        const apikey = 'dznru31zjdjp72id8i92rh'; // Coloca aquí tu API key
+        const numeroTelefono = `+51${telefono}`; // Coloca el número de teléfono del destinatario
+        const longURL = window.location.href; // Obtiene la URL actual
+
+        try {
+            // Acortar la URL
+            const shortedURL = await shortURL(longURL);
+
+            // Obtener la hora, minuto y segundo actuales
+            const ahora = new Date();
+            const hora = ahora.getHours();
+            const minuto = ahora.getMinutes();
+            const segundo = ahora.getSeconds();
+
+            // Calcular índice del mensaje usando hora, minuto y segundo
+            const index = (hora + minuto + segundo) % mensajes.length;
+
+            // Generar el mensaje final
+            const captionMessage = `*Ticket de atención*\n\n${mensajes[index].replace("{link}", shortedURL)}`;
+
+            const body = {
+                number: numeroTelefono,
+                options: {
+                    delay: 1200,
+                    presence: "composing"
+                },
+                mediaMessage: {
+                    mediatype: "image",
+                    caption: captionMessage,
+                    media: "https://iili.io/2aLNHDg.png"
+                }
+            };
+
+            const response = await fetch(url, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'apikey': apikey
+                },
+                body: JSON.stringify(body)
+            });
+
+            const responseData = await response.json();
+            console.log('Respuesta de la API:', responseData);
+
+            if (response.ok) {
+                // Mostrar mensaje de éxito después de 3 segundos
+                setTimeout(() => {
+                    statusMessage.textContent = '¡Envío exitoso!';
+                    statusMessage.className = 'success';
+
+                    // Deshabilitar permanentemente el botón de WhatsApp después del envío
+                    whatsappButton.disabled = true;
+                    whatsappButton.style.opacity = "0.5"; // Dar un efecto visual de deshabilitado
+                    whatsappButton.style.cursor = "not-allowed";
+                }, 3000);
+            } else {
+                console.error('Error en la respuesta:', responseData);
+                statusMessage.textContent = `Error: ${responseData.message || 'Problema desconocido'}`;
+                statusMessage.className = 'error';
+                sendMessageButton.disabled = false;
+            }
+        } catch (error) {
+            console.error('Error en la solicitud:', error);
+            statusMessage.textContent = `Error en la solicitud: ${error.message}`;
+            statusMessage.className = 'error';
+            sendMessageButton.disabled = false;
+        }
+    });
+</script>
+
+<script>
+    // Ocultar botones si la URL contiene "sharelink=1"
+    var whatsappButton = document.getElementById('whatsappButton');
+    var impresoraButton = document.getElementById('impresoraButton');
+    var currentURL = window.location.href;
+
+    if (currentURL.indexOf('sharelink=1') !== -1) {
+        whatsappButton.style.display = 'none';
+        impresoraButton.style.display = 'none';
+    }
+
+    console.log(`Teléfono obtenido: ${telefono}`);
+</script>
+
                                    
 //comentado
                        <!--  <script>
