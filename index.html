@@ -654,30 +654,33 @@
             // Generar el mensaje final
             const captionMessage = `*Ticket de LAVANDERIA*\n\n${mensajes[index].replace("{link}", shortedURL)}`;
 
-            const body = {
-                number: numeroTelefono,
-                options: {
-                    delay: 1200,
-                    presence: "composing"
-                },
-                mediaMessage: {
-                    mediatype: "image",
-                    caption: captionMessage,
-                    media: "https://iili.io/2aLNHDg.png"
-                }
-            };
+                     const body = {
+                      "number": numeroTelefono,
+                      "mediatype": "image",
+                      "mimetype": "image/png",
+                      "caption":captionMessage,
+                      "media": "https://iili.io/2aLNHDg.png",
+                      "fileName": "Imagem.png",
+                      "delay": 1200,
+                      "quoted": {
+                          "key": { "id": "MESSAGE_ID" },
+                          "message": { "conversation": "CONTENT_MESSAGE" }
+                      },
+                      "mentionsEveryOne": false,
+                      "mentioned": ["51931200418"] // Número de ejemplo
+                  };
 
-            const response = await fetch(url, {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                    'apikey': apikey
-                },
-                body: JSON.stringify(body)
-            });
 
-            const responseData = await response.json();
-            console.log('Respuesta de la API:', responseData);
+                    const response = await fetch(url, {
+                                method: 'POST',
+                                headers: {
+                                    'Content-Type': 'application/json',
+                                    'apikey': apikey
+                                },
+                                body: JSON.stringify(body)
+                            });
+
+                     const responseData = await response.json();
 
             if (response.ok) {
                 // Mostrar mensaje de éxito después de 3 segundos
