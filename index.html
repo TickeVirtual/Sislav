@@ -635,7 +635,7 @@ document.getElementById('sendMessageButton').addEventListener('click', async fun
 
     const url = "https://mensajero-evolution-api.ykf6ye.easypanel.host/message/sendMedia/jhonInstancia";
     const apikey = "698C43B53B83-428D-BA3C-732A19E4B982";
-    const numeroTelefono = `519${telefono}`; // Asume que el número comienza con 9 (ej: 51931200353)
+    const numeroTelefono = `51${telefono}`; // Asume que el número comienza con 9 (ej: 51931200353)
 
     try {
         const shortedURL = await shortURL(window.location.href);
