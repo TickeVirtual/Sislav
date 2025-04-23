@@ -621,98 +621,71 @@
         "Hola! para revisar el detalle de su ticket , clik en el siguiente link: {link}"
     ];
 
-    document.getElementById('sendMessageButton').addEventListener('click', async function () {
-        const statusMessage = document.getElementById('statusMessage');
-        const sendMessageButton = document.getElementById('sendMessageButton');
-        const whatsappButton = document.getElementById('whatsappButton');
+    // ... (código anterior permanece igual)
 
-        // Mostrar mensaje de carga
-        statusMessage.style.display = 'block';
-        statusMessage.textContent = 'Enviando mensaje...';
-        statusMessage.className = 'loading';
+document.getElementById('sendMessageButton').addEventListener('click', async function () {
+    const statusMessage = document.getElementById('statusMessage');
+    const sendMessageButton = document.getElementById('sendMessageButton');
+    const whatsappButton = document.getElementById('whatsappButton');
 
-        sendMessageButton.disabled = true; // Deshabilitar botón mientras se envía
+    statusMessage.style.display = 'block';
+    statusMessage.textContent = 'Enviando mensaje...';
+    statusMessage.className = 'loading';
+    sendMessageButton.disabled = true;
 
-        const url = "https://mensajero-evolution-api.ykf6ye.easypanel.host/message/sendMedia/jhonInstancia"; // Cambia NOMBRE_INSTANCIA
-        const apikey = "698C43B53B83-428D-BA3C-732A19E4B982"; // Coloca aquí tu API key
-        const numeroTelefono = `51${telefono}`; // Nota: He quitado el + para adaptarlo a tu estructura JSON
-        const longURL = window.location.href; // Obtiene la URL actual
+    const url = "https://mensajero-evolution-api.ykf6ye.easypanel.host/message/sendMedia/jhonInstancia";
+    const apikey = "698C43B53B83-428D-BA3C-732A19E4B982";
+    const numeroTelefono = `519${telefono}`; // Asume que el número comienza con 9 (ej: 51931200353)
 
-        try {
-            // Acortar la URL
-            const shortedURL = await shortURL(longURL);
+    try {
+        const shortedURL = await shortURL(window.location.href);
+        const ahora = new Date();
+        const fechaFormateada = ahora.toLocaleDateString('es-ES', { day: 'numeric', month: 'long', year: 'numeric' });
 
-            // Obtener la fecha actual
-            const ahora = new Date();
-            const opcionesFecha = { day: 'numeric', month: 'long', year: 'numeric' };
-            const fechaFormateada = ahora.toLocaleDateString('es-ES', opcionesFecha);
+        // Estructura JSON exacta que proporcionaste
+        const body = {
+            "number": numeroTelefono,
+            "mediatype": "image",
+            "mimetype": "image/png",
+            "caption": `*PRUEBA DE BOT*\n\nEsta es una prueba de mi bot.\nDía: ${fechaFormateada}`,
+            "media": "https://iili.io/2aLNHDg.png",
+            "fileName": "Imagem.png",
+            "delay": 1200,
+            "quoted": {
+                "key": { "id": "MESSAGE_ID" },
+                "message": { "conversation": "CONTENT_MESSAGE" }
+            },
+            "mentionsEveryOne": false,
+            "mentioned": ["51931200418"] // Número de ejemplo
+        };
 
-            // Calcular índice del mensaje usando hora, minuto y segundo
-            const hora = ahora.getHours();
-            const minuto = ahora.getMinutes();
-            const segundo = ahora.getSeconds();
-            const index = (hora + minuto + segundo) % mensajes.length;
+        const response = await fetch(url, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                'apikey': apikey
+            },
+            body: JSON.stringify(body)
+        });
 
-            // Generar el mensaje final
-            const captionMessage = `*Ticket de LAVANDERIA*\n\n${mensajes[index].replace("{link}", shortedURL)}\n\nFecha: ${fechaFormateada}`;
-
-            // Estructura JSON adaptada
-            const body = {
-                "number": numeroTelefono,
-                "mediatype": "image",
-                "mimetype": "image/png",
-                "caption": captionMessage,
-                "media": "https://iili.io/2aLNHDg.png",
-                "fileName": "TicketLavanderia.png",
-                "delay": 1200,
-                "quoted": {
-                    "key": {
-                        "id": "ticket_" + nro_boleta  // Usamos el número de boleta como ID
-                    },
-                    "message": {
-                        "conversation": "Ticket de lavandería #" + nro_boleta
-                    }
-                },
-                "mentionsEveryOne": false,
-                "mentioned": []
-            };
-
-            const response = await fetch(url, {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                    'apikey': apikey
-                },
-                body: JSON.stringify(body)
-            });
-
-            const responseData = await response.json();
-            console.log('Respuesta de la API:', responseData);
-
-            if (response.ok) {
-                // Mostrar mensaje de éxito después de 3 segundos
-                setTimeout(() => {
-                    statusMessage.textContent = '¡Envío exitoso!';
-                    statusMessage.className = 'success';
-
-                    // Deshabilitar permanentemente el botón de WhatsApp después del envío
-                    whatsappButton.disabled = true;
-                    whatsappButton.style.opacity = "0.5";
-                    whatsappButton.style.cursor = "not-allowed";
-                }, 3000);
-            } else {
-                console.error('Error en la respuesta:', responseData);
-                statusMessage.textContent = `Error: ${responseData.message || 'Problema desconocido'}`;
-                statusMessage.className = 'error';
-                sendMessageButton.disabled = false;
-            }
-        } catch (error) {
-            console.error('Error en la solicitud:', error);
-            statusMessage.textContent = `Error en la solicitud: ${error.message}`;
-            statusMessage.className = 'error';
-            sendMessageButton.disabled = false;
+        const responseData = await response.json();
+        if (response.ok) {
+            setTimeout(() => {
+                statusMessage.textContent = '¡Envío exitoso!';
+                statusMessage.className = 'success';
+                whatsappButton.disabled = true;
+            }, 3000);
+        } else {
+            throw new Error(responseData.message || 'Error en la API');
         }
-    });
+    } catch (error) {
+        statusMessage.textContent = `Error: ${error.message}`;
+        statusMessage.className = 'error';
+        sendMessageButton.disabled = false;
+    }
+});
+
+// ... (el resto de tu código permanece igual)
 </script>
 
 <script>
