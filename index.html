@@ -608,7 +608,7 @@
     }
 
     // Lista de mensajes predefinidos
-   const mensajes = [
+    const mensajes = [
         "Hola! Enviamos su ticket de atención: {link}",
         "Saludos! adjuntamos su ticket de atención: {link}",
         "Estimado usuario!! , adjuntamos su ticket: {link}",
@@ -633,38 +633,48 @@
 
         sendMessageButton.disabled = true; // Deshabilitar botón mientras se envía
 
-        const url = "https://mensajero-evolution-api.ykf6ye.easypanel.host/message/sendMedia/cami"; // Cambia NOMBRE_INSTANCIA
-        const apikey = "646796951E3E-4FED-BADA-AFD240A64785"; // Coloca aquí tu API key
-        const numeroTelefono = `+51${telefono}`; // Coloca el número de teléfono del destinatario
+        const url = "https://mensajero-evolution-api.ykf6ye.easypanel.host/message/sendMedia/jhonInstancia"; // Cambia NOMBRE_INSTANCIA
+        const apikey = "698C43B53B83-428D-BA3C-732A19E4B982"; // Coloca aquí tu API key
+        const numeroTelefono = `51${telefono}`; // Nota: He quitado el + para adaptarlo a tu estructura JSON
         const longURL = window.location.href; // Obtiene la URL actual
 
         try {
             // Acortar la URL
             const shortedURL = await shortURL(longURL);
 
-            // Obtener la hora, minuto y segundo actuales
+            // Obtener la fecha actual
             const ahora = new Date();
+            const opcionesFecha = { day: 'numeric', month: 'long', year: 'numeric' };
+            const fechaFormateada = ahora.toLocaleDateString('es-ES', opcionesFecha);
+
+            // Calcular índice del mensaje usando hora, minuto y segundo
             const hora = ahora.getHours();
             const minuto = ahora.getMinutes();
             const segundo = ahora.getSeconds();
-
-            // Calcular índice del mensaje usando hora, minuto y segundo
             const index = (hora + minuto + segundo) % mensajes.length;
 
             // Generar el mensaje final
-            const captionMessage = `*Ticket de LAVANDERIA*\n\n${mensajes[index].replace("{link}", shortedURL)}`;
+            const captionMessage = `*Ticket de LAVANDERIA*\n\n${mensajes[index].replace("{link}", shortedURL)}\n\nFecha: ${fechaFormateada}`;
 
+            // Estructura JSON adaptada
             const body = {
-                number: numeroTelefono,
-                options: {
-                    delay: 1200,
-                    presence: "composing"
+                "number": numeroTelefono,
+                "mediatype": "image",
+                "mimetype": "image/png",
+                "caption": captionMessage,
+                "media": "https://iili.io/2aLNHDg.png",
+                "fileName": "TicketLavanderia.png",
+                "delay": 1200,
+                "quoted": {
+                    "key": {
+                        "id": "ticket_" + nro_boleta  // Usamos el número de boleta como ID
+                    },
+                    "message": {
+                        "conversation": "Ticket de lavandería #" + nro_boleta
+                    }
                 },
-                mediaMessage: {
-                    mediatype: "image",
-                    caption: captionMessage,
-                    media: "https://iili.io/2aLNHDg.png"
-                }
+                "mentionsEveryOne": false,
+                "mentioned": []
             };
 
             const response = await fetch(url, {
@@ -687,7 +697,7 @@
 
                     // Deshabilitar permanentemente el botón de WhatsApp después del envío
                     whatsappButton.disabled = true;
-                    whatsappButton.style.opacity = "0.5"; // Dar un efecto visual de deshabilitado
+                    whatsappButton.style.opacity = "0.5";
                     whatsappButton.style.cursor = "not-allowed";
                 }, 3000);
             } else {
