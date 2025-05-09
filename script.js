@@ -7,7 +7,7 @@
                   var nro_boleta = params.has('boleta') ? params.get('boleta') : "---";
                   var nombre_cliente = params.has('cliente') ? params.get('cliente') : "==Cliente==";
                   var puntos = params.has('puntos') ? params.get('puntos') : "0";
-                  var qr = params.has('qr') ? params.get('qr') : "0";
+                  var cod = params.has('cod') ? params.get('cod') : "0";
                   var telefono = params.has('telefono') ? params.get('telefono') : "==Cliente==";
                   var codigo_pais = params.has('codigo_pais') ? params.get('codigo_pais') : "+";
                   var fecha = params.has('fecha') ? params.get('fecha') : "dd/mm/aaaa hh:mm:ss";
@@ -138,7 +138,7 @@
                           var fechaElement = document.getElementById("fecha").textContent = fecha;
                           var nombre_clientElement = document.getElementById("nombre_client").textContent = nombre_cliente;
                           var puntosElement = document.getElementById("puntos").textContent = puntos;
-                          var qrElement = document.getElementById("qr").textContent = qr;
+                          var codElement = document.getElementById("cod").textContent = cod;
                           var fecha_entregaElement = document.getElementById("fecha_entrega").textContent = fecha_entrega;
                           var totalElement = document.getElementById("total");totalElement.textContent = parseFloat(total).toFixed(2);
                           var descuentoElement = document.getElementById("descuento");descuentoElement.textContent = parseFloat(descuento).toFixed(2);
