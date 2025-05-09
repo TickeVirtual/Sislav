@@ -1,0 +1,266 @@
+                .m-0 {
+                        margin: 0 !important;
+                        font-weight: normal; /* Agrega esta línea para desactivar la negrita */
+                        text-align: left;
+                        font-size: 0.5mm;
+                      }
+                    *{
+                        font-family: tahoma, Helvetica, sans-serif; /* tipo de letra de todo el ticket; */
+                        font-size: 2.5mm !important;
+                        line-height: 1 !important;
+                      }
+
+
+                      /* Sobrescribir el tamaño de fuente solo para "Por Pagar" */
+                    #total_por_pagar {
+                      font-size: 4mm !important; /* Tamaño específico para el total por pagar */
+                    }
+
+                    #total_por_pagar ~ h2 {
+                    font-size: 4mm !important; /* Aplica a cualquier h2 adyacente en esa fila */
+                    }
+
+                    .info-tienda {
+                        margin-top: 0;
+                        margin-bottom:0mm;
+                        line-height: 4mm;
+                    }
+
+                    .nro_boleta {
+                        margin: 0;
+                        font-size: 5mm !important;
+                    }
+
+                    .fecha_recepcion {
+                        margin: 0;
+                    }
+                    .fecha_entrega {
+                        line-height: 5mm;
+                        margin: 0;
+                    }
+
+                    .nombre-cliente {
+                        margin: 0mm;
+                        margin-top: 0;
+                        font-size: 3.5mm !important;
+                    }
+
+                    #thermal-pos {
+                        box-shadow: 0 0 5mm #eee;
+                        margin: 0 auto;
+                        max-width: 79mm;
+                        /* line-height: 6mm; */
+                        padding: 0mm;
+                    }
+
+                    #thermal-pos h2 {
+                        font-size: 2mm;
+                        line-height: 13px;
+                        font-weight: normal; /* Agrega esta línea para desactivar la negrita */
+                    }
+
+                    .label {
+                        margin: 0;
+                      }
+
+                    .ticket {
+                        text-align: center;
+                        Padding-top: 0; /* Elimina el margen superior */
+                        Padding-bottom: 0; /* Elimina el margen inferior */
+                        Padding-right: 0;
+                        Padding-left: 0;
+                    }
+
+                    .fecharecep {
+                        text-align: center;
+                        Padding-top: 0; /* Elimina el margen superior */
+                        Padding-bottom: 0; /* Elimina el margen inferior */
+                        Padding-right: 0;
+                        Padding-left: 0;
+                    }
+
+                    #thermal-pos .label {
+                        text-align: center;
+                        font-size: 2mm;
+                    }
+
+                    #thermal-pos .line {
+                        text-align: center;
+                        line-height: 0;
+                        font-size: 1mm;
+                    }
+
+                    #thermal-pos .detalles {
+                        vertical-align: text-top;
+                        max-width: 35mm;
+                        word-wrap: break-word;
+                    }
+
+                    #thermal .listitem {
+                        font-size: 2mm;
+                        height: 5mm;
+                    }
+
+                    #thermal-pos table {
+                        font-size: 2mm;
+                        height: 5mm;
+                        border-collapse: collapse;
+                    }
+
+                    #thermal-pos .item {
+                        max-width: 30mm;
+                        font-size: 2.1mm;
+                        text-align: start;
+                        word-wrap: break-word;
+                        font-weight: normal; /* Agrega esta línea para desactivar la negrita */
+                    }
+
+                    #thermal-pos .cantidad {
+                        text-align: right;
+                    }
+
+                    #thermal-pos .footer {
+                        margin-top: 5mm;
+                        text-align: center;
+                        height: 60px;
+                        page-break-after: auto;
+                    }
+
+                    .table {
+                        width: 100%;
+                        text-align: right;
+                    }
+
+                    .table-header {
+                        text-align: right;
+                        border-top: groove; /* Raya superior de encabezado de tabla de detalles; */
+                        border-bottom: groove; /* Raya inferior de encabezado de tabla de detalles; */ 
+                      }
+
+                    .table-header h2 {
+                        margin: 0;
+                    }
+
+                    .table-item {
+                      vertical-align: top;
+                    }
+                    /* raya superior de SUBTOTAL; */
+                    .top-line {
+                      border-top: groove;
+                    }
+
+                    .pt-2 {
+                      padding-top: 2mm;
+                    }
+
+                    .saldo-text {
+                      margin: 0;
+                      font-size: 15mm;
+                      text-align: center;
+                    } 
+
+                    .table-footer {
+                      vertical-align: bottom;
+                      text-align: right;
+                      font-size: 2mm;
+                      line-height: 2mm;
+                    }
+
+                    .table-footer h2 {
+                      margin: 0;
+                      font-size: 2mm;
+                    }
+
+                    .estado-deuda {
+                      font-size: 4mm !important;
+                    }
+
+                    .info {
+                      font-size: 1.6mm;
+                    }
+                    .info p {
+                      padding-bottom: 0;
+                      margin-bottom: 0;
+                    }
+                    
+                    .align-left {
+                      text-align: left;
+                  }
+                    
+
+
+
+                  .policy {
+                    font-size: 1.5mm;
+                    line-height: 3.5mm;
+                    padding: 3mm;
+                    padding-top: 0;
+                  }
+
+                  .policy .policy-title {
+                    text-align: center;
+                    margin: 0;
+                    font-weight: normal; /* Agrega esta línea para desactivar la negrita */
+                    
+                  }
+                  
+                  .align-right {
+                        text-align: right;
+                    }
+                /* ---------------------------------------------------------------------------------------------- */
+
+                .button-container {
+                  display: flex;
+                  justify-content: center; /* Centrar horizontalmente */
+                }
+
+                .button-box {
+                  max-width: 300px; /* Ancho máximo del contenedor */
+                  display: flex;
+                  justify-content: space-between; /* Espacio entre las imágenes */
+                }
+
+                .button-box img {
+                  max-width: 100%; /* Tamaño máximo de las imágenes */
+                }
+
+                /* Estilo para ocultar los botones en la versión impresa */
+                  @media print {
+                    #sendMessageButton, #impresoraButton {
+                        display: none !important;
+                    }
+                }
+                .hidden {
+                    display: none !important;
+                }
+
+                /* CSS para ocultar las imágenes de WhatsAppButton cuando sharelink=1 está presente en la URL */
+                img#sendMessageButton {
+                    display: none;
+                }
+
+                /* CSS para ocultar las imágenes de WhatsAppButton cuando sharelink=1 está presente en la URL */
+                img#impresoraButton {
+                    display: none;
+                }
+          
+                #statusMessage {
+                    margin-top: 20px;
+                    font-size: 18px;
+                    font-weight: bold;
+                    display: none;
+                }
+
+                .loading {
+                    color: rgb(255, 60, 0);
+                    font-size: 20px;
+                }
+
+                .success {
+                    color: rgb(15, 228, 15);
+                    font-size: 30px;
+                }
+                /* ------------------------------------------------------------------------------------------------- */
+
+                      
+              </style>
