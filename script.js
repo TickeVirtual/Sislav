@@ -7,7 +7,7 @@
                   var nro_boleta = params.has('boleta') ? params.get('boleta') : "---";
                   var nombre_cliente = params.has('cliente') ? params.get('cliente') : "==Cliente==";
                   var puntos = params.has('puntos') ? params.get('puntos') : "0";
-                  var cod = params.has('cod') ? params.get('cod') : "0";
+                  var qr = params.has('qr') ? params.get('qr') : "0";
                   var telefono = params.has('telefono') ? params.get('telefono') : "==Cliente==";
                   var codigo_pais = params.has('codigo_pais') ? params.get('codigo_pais') : "+";
                   var fecha = params.has('fecha') ? params.get('fecha') : "dd/mm/aaaa hh:mm:ss";
@@ -327,11 +327,11 @@
                           // Generar código QR desde parámetro 'qr'
                           document.addEventListener("DOMContentLoaded", function () {
                             const params = new URLSearchParams(window.location.search);
-                            const cod = params.has('cod') ? params.get('cod') : "0000";
-
+                            const qr = params.has('qr') ? params.get('qr') : "0000";
+                          
                             const qrElement = new QRious({
                               element: document.getElementById('qr-code'),
-                              value: cod,
+                              value: qr,
                               size: 100
                             });
                           });
