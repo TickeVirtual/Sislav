@@ -28,38 +28,27 @@
   <div id="thermal-pos">
     <div class="label">
       <img class="boton" src="logito.jpg" width="40%">
-      <br />
+      <br /><br>
       <p class="info-tienda">
         Av mi dirección Jr Camilo Carrillo 131 //ref: Frente a la Contraloría.<br>
-        Horario: Lunes a Sábado 8am a 8pm / Domingos de 9am a <br>
+        Horario: Lunes a Sábado 8am a 8pm / Domingos de 9am a 3pm<br>
         Teléfono: 961100231
       </p>
     </div>
-
-    <!-- Encabezado del ticket -->
-    <div class="ticket">
-      <b>TICKET:</b><br>
-      <h1 class="nro_boleta" id="nro_boleta_id"></h1>
-
-      <div class="fecharecep">
-        <p class="fecha">
-          <b>FECHA RECEPCIÓN:</b><br>
-          <b id="fecha"></b>
-        </p>
+    <br><br>
+      <!-- Encabezado del ticket con QR alineado a la derecha -->
+      <div class="ticket-header" style="display: flex; justify-content: space-between; align-items: flex-start;">
+        <div style="text-align: left;">
+          <b>TICKET:</b> <span id="nro_boleta_id"></span><br><br>
+          <b>FECHA RECEPCIÓN:</b> <span id="fecha"></span><br><br>
+          <b>CLIENTE:</b> <span id="nombre_client"></span><br><br>
+          <b>PUNTOS:</b> <span id="puntos"></span><br><br>
+          <b>FECHA ENTREGA:</b> <span id="fecha_entrega"></span>
+        </div>
+        <div id="qr-container" style="text-align: right;">
+          <canvas id="qr-code"></canvas>
+        </div>
       </div>
-
-      <b>CLIENTE:</b><br>
-      <h1 class="nombre-cliente" id="nombre_client"></h1>
-
-      <b>PUNTOS:</b> <span id="puntos"></span>
-
-      <div class="label">
-        <p class="fecha_entrega">
-          <b>FECHA ENTREGA:</b><br>
-          <span id="fecha_entrega"></span>
-        </p>
-      </div>
-    </div>
 
     <!-- Tabla de servicios -->
     <table class="table">
@@ -120,7 +109,8 @@
     <!-- Mensaje de estado -->
     <div id="statusMessage"></div>
   </div>
-
+   <!-- Libreria para el QR -->
+  <script src="https://cdn.jsdelivr.net/npm/qrious@4.0.2/dist/qrious.min.js"></script>
   <!-- Enlace al archivo JavaScript -->
   <script src="script.js"></script>
 </body>
