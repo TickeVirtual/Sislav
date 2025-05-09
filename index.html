@@ -1,501 +1,127 @@
 <!DOCTYPE html>
-          <html lang="es">
-            <head>
-              <meta charset="UTF-8">
-              <meta http-equiv="X-UA-Compatible" content="IE=edge">
-              <meta name="viewport" content="width=device-width, initial-scale=1.0">
-              <title>Ticket de Compra</title>
-              <link rel="stylesheet" href="estilo.css">
-          </head>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Ticket de Compra</title>
+  <link rel="stylesheet" href="estilo.css" />
+</head>
+<body>
 
+  <!-- Botones de impresión y WhatsApp -->
+  <div class="button-container">
+    <div class="button-box">
+      <a href="#" id="impresoraButton">
+        <img class="boton" src="Print.png" width="60%">
+      </a>
+      <a href="#" id="sendMessageButton">
+        <img class="boton" src="wsp.png" width="60%">
+      </a>
+    </div>
+  </div>
 
-              <script>
-                  // Obtener los parámetros de la URL
-                  const params = new URLSearchParams(window.location.search);
+  <!-- Campo oculto con la URL -->
+  <input type="hidden" id="url" value="">
 
-                  // Obtener los valores de los parámetros
-                  var nro_boleta = params.has('boleta') ? params.get('boleta') : "---";
-                  var nombre_cliente = params.has('cliente') ? params.get('cliente') : "==Cliente==";
-                  var puntos = params.has('puntos') ? params.get('puntos') : "0";
-                  var telefono = params.has('telefono') ? params.get('telefono') : "==Cliente==";
-                  var codigo_pais = params.has('codigo_pais') ? params.get('codigo_pais') : "+";
-                  var fecha = params.has('fecha') ? params.get('fecha') : "dd/mm/aaaa hh:mm:ss";
-                  var fecha_entrega = params.has('fecha_entrega') ? params.get('fecha_entrega') : "hh:mm:ss";
-                  var total = params.has('total') ? params.get('total') : "";
-                  var total_a_pagar = params.has('total_a_pagar') ? params.get('total_a_pagar') : " ";
-                  var descuento = params.has('descuento') ? params.get('descuento') :  '0.00';
-                  var a_cuenta = params.has('a_cuenta') ? params.get('a_cuenta') : " ";
-                  var desc_por_prenda = params.has('desc_por_prenda') ? params.get('desc_por_prenda') : " ";
-                  var pagado_con = params.has('pagado_con') ? params.get('pagado_con') : "--";
-                  var a_cuenta_dos = params.has('a_cuenta_dos') ? params.get('a_cuenta_dos') : " ";
-                  var pagado_con_dos = params.has('pagado_con_dos') ? params.get('pagado_con_dos') : "--";
-                  var porcent_desc = params.has('porcent_desc') ? params.get('porcent_desc') : " ";
-                  var porcent_desc_plata = params.has('porcent_desc_plata') ? params.get('porcent_desc_plata') : " ";
-                  var total_por_pagar = params.has('total_por_pagar') ? params.get('total_por_pagar') : " ";
-                  var estado = params.has('estado') ? params.get('estado') : "--";
-                  var total_prendas = params.has('total_prendas') ? params.get('total_prendas') : "--";
+  <!-- Contenedor principal del ticket -->
+  <div id="thermal-pos">
+    <div class="label">
+      <img class="boton" src="logito.jpg" width="40%">
+      <br />
+      <p class="info-tienda">
+        Av mi dirección Jr Camilo Carrillo 131 //ref: Frente a la Contraloría.<br>
+        Horario: Lunes a Sábado 8am a 8pm / Domingos de 9am a 3pm<br>
+        Teléfono: 961100231
+      </p>
+    </div>
 
-                        
-                  var cantidades = params.has('cantidades') ? params.get('cantidades') : "";
-                  var descripciones = params.has('servicios') ? params.get('servicios') : "";
-                  var detalle = params.has('detalles') ? params.get('detalles') : "";
-                  var p_units = params.has('p_unit') ? params.get('p_unit') : "";
-                  var subtotal = params.has('subtotal') ? params.get('subtotal') : "";
-                  
-                  //Formato de 2 decimales
-                  //total = parseFloat(total).toLocaleString('es-ES', { minimumFractionDigits: 2 });
-                  //descuento = parseFloat(descuento).toLocaleString('es-ES', { minimumFractionDigits: 2 });
-                  //subtotal_desc = parseFloat(subtotal_desc).toLocaleString('es-ES', { minimumFractionDigits: 2 });
-                  
-                  //crea una lista de cada columna a partir de las comas.
-                  cantidades = cantidades.split(",");
-                  descripciones = descripciones.split(",");
-                  detalle = detalle.split(",");
-                  p_units = p_units.split(",");
+    <!-- Encabezado del ticket -->
+    <div class="ticket">
+      <b>TICKET:</b><br>
+      <h1 class="nro_boleta" id="nro_boleta_id"></h1>
 
-                  //Crea una lista para mostrar en cada fila de la tabla
-                  var result = [];
-                  
-                  cantidades.forEach(function(value, id) {
-                      result[id] = {
-                          cantidad: cantidades[id],
-                          descripcion: descripciones[id], // + " " + detalles[id], // Descomenta si deseas concatenar la descripción con el detalle
-                          detalle: detalle[id],
-                          subtotal: subtotal[id],
-                          precio_unit: parseFloat(p_units[id]).toFixed(2),
-                        
-                      };
-                  });
-              </script>
-              
-          <div id="header">
-            <div class="button-container">
-              <!-- Contenedor de botones -->
-              <div class="button-box">
-            <!-- Botón de WhatsApp con ícono -->
-                <a href="#" id="impresoraButton">
-                  <img class="boton" src="Print.png" class="ImganelLogo" width= "60%" id "foto">
-                </a>
-                          
-                          <!-- Botón existente de WhatsApp -->
-                          
-                <a href="#" id="sendMessageButton">
-                  <img class="boton" src="wsp.png" class="ImganelLogo" width= "60%" id "foto">
-                  <div id="statusMessage"></div>
-                </a>
+      <div class="fecharecep">
+        <p class="fecha">
+          <b>FECHA RECEPCIÓN:</b><br>
+          <b id="fecha"></b>
+        </p>
+      </div>
 
-                          <!--<button id="sendMessageButton">Enviar WhatsApp</button>
-                          <div id="statusMessage"></div>-->
-              </div>
-            </div>
-          </div>
+      <b>CLIENTE:</b><br>
+      <h1 class="nombre-cliente" id="nombre_client"></h1>
 
-              <!-- Agregamos el input oculto para la URL -->
-          <input type="hidden" id="url" value="">
-              
-          <div id="thermal-pos">
-                  
-          <div id="thermal-pos">
-                  
-          <div class="label">
-              <img class="boton" src="logito.jpg" class="ImganelLogo" width= "40%" id "foto">
-                <br/>
-                    <p class="info-tienda">
-                    Av mi dirección Jr Camilo Carrillo 131 //ref: Frente a la cntraloria.
-                <br>
-                    Horario: Lunes a Sabado 8am a 8pm / Domingos de 9am a 3pm
-                <br>
-                    Telefono: 961100231
-                <br>
-          </div>
-                  
-          <!-- ESTRUCTURA DEL TICKET-->
+      <b>PUNTOS:</b> <span id="puntos"></span>
 
-           <div class="ticket">
-                        <b>TICKET:</b> <br>
-                        <h1 class="nro_boleta" id="nro_boleta_id"></h1>
-                    
-                        <div class="fecharecep">
-                            <p class="fecha">
-                                <b>FECHA RECEPCIÓN:</b> <br>
-                                <b id="fecha"></b>
-                            </p>
-                        </div>
-                    
-                        <b>CLIENTE:</b> <br>
-                        <h1 class="nombre-cliente" id="nombre_client"></h1>
-                    
-                        <b>PUNTOS:</b> <span id="puntos">22</span>
-                    
-                        <div class="label">
-                            <p class="fecha_entrega">
-                                <b>FECHA ENTREGA:</b> <br>
-                                <span id="fecha_entrega"></span>
-                            </p>
-                        </div>
-                    </div>
+      <div class="label">
+        <p class="fecha_entrega">
+          <b>FECHA ENTREGA:</b><br>
+          <span id="fecha_entrega"></span>
+        </p>
+      </div>
+    </div>
 
-                
-                <table class="table">
-                  <tbody id="tablaBody">
-                      <tr class="table-header">
-                        <th><h2>Cant</h2></th>
-                        <th><h2>Descripcion</h2></th>
-                        <th><h2>Precio</h2></th>
-                        <th><h2>Subtotal</h2></th> <!-- Nueva columna para Subtotal -->
-                      </tr>
-                  <!-- SCRIPT PARA CREAR EL POP UP -->
-                        <script>
-                          function abrirPopup(event, url) {
-                            event.preventDefault();
-                            window.open(url,'Ticket','width=400,height=600,scrollbars=no,resizable=no,top=100,left=100');
-                            }
-                        </script>
+    <!-- Tabla de servicios -->
+    <table class="table">
+      <tbody id="tablaBody">
+        <tr class="table-header">
+          <th><h2>Cant</h2></th>
+          <th><h2>Descripción</h2></th>
+          <th><h2>Precio</h2></th>
+          <th><h2>Subtotal</h2></th>
+        </tr>
+      </tbody>
 
-                        <script>
-                          var tablaBody = document.getElementById("tablaBody");
-                              result.forEach(function(row) {
-                          var newRow = document.createElement("tr");
-                              newRow.className = "table-item";
-                                      // Calcula el subtotal para el servicio actual
-                          var subtotal = row.cantidad * parseFloat(row.precio_unit);
-                              newRow.innerHTML = `
-                                <td class="item" style="text-align: right;">${row.cantidad}</td>
-                                <td class="item" style="text-align: right;">${row.descripcion}</td>
-                                <td class="item" style="text-align: right;">${row.precio_unit}</td> <!-- Alinea a la derecha -->
-                                <td class="item" style="text-align: right;">${subtotal.toFixed(2)}</td> <!-- Alinea a la derecha -->
-                            `;
+      <!-- Totales -->
+      <tr class="table-footer top-line">
+        <td colspan="3">Total Venta:</td>
+        <td><h2 id="total"></h2></td>
+      </tr>
+      <tr class="table-footer">
+        <td colspan="3">Descuento:</td>
+        <td><h2 id="descuento"></h2></td>
+      </tr>
+      <tr class="table-footer">
+        <td colspan="3">Pago#1:</td>
+        <td><h2 id="a_cuenta"></h2></td>
+      </tr>
+      <tr class="table-footer">
+        <td colspan="3">Pago#2:</td>
+        <td><h2 id="a_cuenta_dos"></h2></td>
+      </tr>
+      <tr class="table-footer">
+        <td colspan="3">Por Pagar:</td>
+        <td><h2 id="total_por_pagar"></h2></td>
+      </tr>
+      <tr class="table-footer">
+        <td colspan="3"></td>
+        <td><h2 id="porcent_desc_plata"></h2></td>
+      </tr>
+    </table>
 
-                            tablaBody.appendChild(newRow);
-                              });
+    <!-- Estado de la deuda y total de prendas -->
+    <br />
+    <p class="saldo-text">
+      <b><span class="estado-deuda" id="estado"></span></b>
+    </p>
+    <br />
+    <p class="prendas">
+      <b><span class="total_prendas" id="total_prendas"></span></b>
+    </p>
 
-                                        document.querySelectorAll('.printbutton').forEach(function(element) {
-                                    element.addEventListener('click', function() {
-                                        /*print();*/
-                                    });
-                                });
+    <!-- Mensaje de agradecimiento -->
+    <div class="policy">
+      <p class="policy-title">
+        <b>GRACIAS POR SU PREFERENCIA!!</b><br><br>
+        <b>PRÓXIMAMENTE AGENTE BCP!!</b><br><br>
+      </p>
+    </div>
 
-                        </script>
-                      <!-- ... (INICIA EL CODIGO DE ACORTAR URL) ... -->
-                        <script>
-                        // Función para acortar la URL
-                        async function shortURL(url) {
-                            const response = await fetch(`https://tinyurl.com/api-create.php?url=${encodeURIComponent(url)}`);
-                            if (response.ok) {
-                                return await response.text();
-                            } else {
-                                throw new Error("Error al acortar la URL");
-                            }
-                        }
+    <!-- Mensaje de estado -->
+    <div id="statusMessage"></div>
+  </div>
 
-                        // Modificamos la función para enviar el mensaje de WhatsApp
-                        async function sendWhatsAppMessage() {
-                            var currentURL = window.location.href;
-                            
-                            try {
-                                // Acortamos la URL actual
-                                var shortedURL = await shortURL(currentURL);
-                                
-                                var message = 'Hola!! somos de la lavandería ,  adjuntamos su ticket de atención virtual. Click en el link para ver el ticket 👇 ' +     
-                                shortedURL;
-                                
-                                var whatsappLink = 'https://api.whatsapp.com/send?phone=' + codigo_pais + telefono + '&text=' + encodeURIComponent(message)+'?sharelink=1';
-                                
-                                window.open(whatsappLink, '_blank');
-                            } catch (error) {
-                                console.error("Error al acortar la URL:", error);
-                                alert("Hubo un error al acortar la URL. Por favor, intente nuevamente.");
-                            }
-                        }
-
-                        // Asignamos la nueva función al evento click del botón
-                        //document.getElementById('whatsappButton').addEventListener('click', sendWhatsAppMessage);
-
-                        // (FINALIZA EL CODIGO DE ACORTAR URL) ... -->
-                        </script>
-
-                        <script>
-                            
-                            // Función para imprimir el ticket
-                        function printTicket() {
-                          window.print();
-                        }
-
-                        // Asignar la función al evento click del botón de impresión
-                        document.getElementById('impresoraButton').addEventListener('click', printTicket);
-                        </script>
-                            
-                      
-
-                                  <tr class="table-footer top-line">
-                                      <td class="" colspan="3">Total Venta:</td>
-                                      <td colspan="3"><h2 id="total"></h2></td>
-                                  </tr>
-
-                                  <tr class="table-footer">
-                                      <td colspan="3"><h2>Descuento:</h2></td>
-                                      <td colspan="3"><h2 id="descuento"></h2></td>
-                                      
-                                  </tr>
-                                  
-                                  <tr class="table-footer">
-                                      <td colspan="3"><h2>Pago#1:</h2></td>
-                                      <td colspan="3"><h2 id="a_cuenta"></h2></td>
-                                      
-                                  </tr>
-                                      <tr class="table-footer">
-                                      <td colspan="3"><h2>pago#2:</h2></td>
-                                      <td colspan="3"><h2 id="a_cuenta_dos"></h2></td>  
-                                  </tr>
-                                  
-                                  <tr class="table-footer">
-                                      <td colspan="3"><h2>Por Pagar</h2></td>
-                                      <td colspan="3"><h2 id="total_por_pagar"></h2></td>
-                                  </tr>
-                                                  
-                                  <tr class="table-footer">
-                                      <td colspan="3"><h2 id=0></h2></td>
-                                      <td colspan="3"><h2 id="porcent_desc_plata"></h2></td>
-
-                                  </tr>
-                                  
-                                  <tr class="table-footer">
-                                      <td colspan="3"><h2></h2></td>
-                                      <td colspan="3"><h2 id="porcent_desc_plata"></h2></td>
-                                  </tr>
-                                  
-                                
-                </table>
-                          <br/>
-
-                          <p id="textOutput"> </p>
-                          <p class="saldo-text">
-                              <b><span class="estado-deuda" id="estado"></span></b>
-                          </p>
-                          <br/>
-                          <p class="prendas:">
-                              <b><span class="total_prendas" id="total_prendas"></span></b>
-                          </p>
-                        <div class="policy">
-
-                              <p class="policy-title">
-                                  <b>Preguntar por condiciones en las promociones:</b>
-                              </p><br/> <br/>
-
-                                  La promoción de lavado al kilo no incluye casacas gruesas o delicadas , toallas de baño grueso ni juego de sabana.<br/> <br/>
-                              <p class="policy-title">
-                                  <b>CONDICIONES DE SERVICIO:</b>
-                              </p><br/> <br/>
-                          
-                              <p class="m-0"> 
-                                        No nos hacemos responsables por destiñidos, adornos, cierres, deterioros o confecciones defectuosas por uso.<br/> <br/>
-                              </p>
-                      
-                          <div class="policy">
-                              <p class="policy-title">
-                                  <b>GRACIAS POR SU PREFERENCIA!!</b> <br/> <br/>
-                                <b>PROXIMAMENTE AGENTE BCP!!</b> <br/> <br/>
-                              </p>
-                      </div>
-                      <script>
-                          var nroBoletaElement = document.getElementById("nro_boleta_id").textContent = nro_boleta;
-                          var fechaElement = document.getElementById("fecha").textContent = fecha;
-                          var nombre_clientElement = document.getElementById("nombre_client").textContent = nombre_cliente;
-                          var puntosElement = document.getElementById("puntos").textContent = puntos;
-                          var fecha_entregaElement = document.getElementById("fecha_entrega").textContent = fecha_entrega;
-                          var totalElement = document.getElementById("total");totalElement.textContent = parseFloat(total).toFixed(2);
-                          var descuentoElement = document.getElementById("descuento");descuentoElement.textContent = parseFloat(descuento).toFixed(2);
-                          var a_cuentaElement = document.getElementById("a_cuenta");a_cuentaElement.textContent = parseFloat(a_cuenta).toFixed(2);
-                          var a_cuenta_dosElement = document.getElementById("a_cuenta_dos"); a_cuenta_dosElement.textContent = parseFloat(a_cuenta_dos).toFixed(2);
-                          var total_por_pagarElement = document.getElementById("total_por_pagar");total_por_pagarElement.textContent = parseFloat(total_por_pagar).toFixed(2);
-                          //var porcent_descElement = document.getElementById("porcent_desc").textContent = porcent_desc;
-                          //var porcent_desc_plataElement = document.getElementById("porcent_desc_plata").textContent = porcent_desc_plata;
-                          var estadoElement = document.getElementById("estado").textContent = estado;
-                          var total_prendasElement = document.getElementById("total_prendas").textContent = total_prendas;
-                      </script>   
-
-                      <script>
-                      // Obtén el botón de WhatsApp por su ID
-                      var whatsappButton = document.getElementById('whatsappButton');
-                      var impresoraButton = document.getElementById('impresoraButton');
-
-                      // Obtén la URL actual
-                      var currentURL = window.location.href;
-
-                      // Verifica si la URL contiene "sharelink=1" y oculta el botón si es así
-                      if (currentURL.indexOf('sharelink=1') !== -1) {
-                          sendMessageButton.style.display = 'none';
-                          impresoraButton.style.display = 'none';
-                      }
-                      </script>
-
-                   <script>
-    // Función para acortar la URL
-    async function shortURL(url) {
-        const response = await fetch(`https://tinyurl.com/api-create.php?url=${encodeURIComponent(url)}`);
-        if (response.ok) {
-            return await response.text();
-        } else {
-            throw new Error("Error al acortar la URL");
-        }
-    }
-
-    // Lista de mensajes predefinidos
-   const mensajes = [
-        "Hola! Enviamos su ticket de atención: {link}",
-        "Saludos! adjuntamos su ticket de atención: {link}",
-        "Estimado usuario!! , adjuntamos su ticket: {link}",
-        "Buen día! enviamos su nota de atenciión: {link}",
-        "Estimado cliente, su ticket está disponible en el siguiente link: {link}",
-        "Hola! en el siguiente lin podra visualizar su ticket de venta: {link}",
-        "Saludos! para verificar su ticket, clik en el siguiente link: {link}",
-        "Hola, adjuntamos el ticket de atención por el sevicio: {link}",
-        "Estimado usuario , en el siguiente link podra encontrar su ticket: {link}",
-        "Hola! para revisar el detalle de su ticket , clik en el siguiente link: {link}"
-    ];
-
-    document.getElementById('sendMessageButton').addEventListener('click', async function () {
-        const statusMessage = document.getElementById('statusMessage');
-        const sendMessageButton = document.getElementById('sendMessageButton');
-        const whatsappButton = document.getElementById('whatsappButton');
-
-        // Mostrar mensaje de carga
-        statusMessage.style.display = 'block';
-        statusMessage.textContent = 'Enviando mensaje...';
-        statusMessage.className = 'loading';
-
-        sendMessageButton.disabled = true; // Deshabilitar botón mientras se envía
-
-        const url = "https://mensajero-evolution-api.ykf6ye.easypanel.host/message/sendMedia/lavanttiinstancia"; // Cambia NOMBRE_INSTANCIA
-        const apikey = "7776B2550EFF-4F2E-8EFD-F4A8D8D59F10"; // Coloca aquí tu API key
-        const numeroTelefono = `+51${telefono}`; // Coloca el número de teléfono del destinatario
-        const longURL = window.location.href; // Obtiene la URL actual
-
-        try {
-            // Acortar la URL
-            const shortedURL = await shortURL(longURL);
-
-            // Obtener la hora, minuto y segundo actuales
-            const ahora = new Date();
-            const hora = ahora.getHours();
-            const minuto = ahora.getMinutes();
-            const segundo = ahora.getSeconds();
-
-            // Calcular índice del mensaje usando hora, minuto y segundo
-            const index = (hora + minuto + segundo) % mensajes.length;
-
-            // Generar el mensaje final
-            const captionMessage = `*Ticket de LAVANDERIA*\n\n${mensajes[index].replace("{link}", shortedURL)}`;
-
-                     const body = {
-                      "number": numeroTelefono,
-                      "mediatype": "image",
-                      "mimetype": "image/png",
-                      "caption":captionMessage,
-                      "media": "https://iili.io/2aLNHDg.png",
-                      "fileName": "Imagem.png",
-                      "delay": 1200,
-                      "quoted": {
-                          "key": { "id": "MESSAGE_ID" },
-                          "message": { "conversation": "CONTENT_MESSAGE" }
-                      },
-                      "mentionsEveryOne": false,
-                      "mentioned": ["51931200418"] // Número de ejemplo
-                  };
-
-
-                    const response = await fetch(url, {
-                                method: 'POST',
-                                headers: {
-                                    'Content-Type': 'application/json',
-                                    'apikey': apikey
-                                },
-                                body: JSON.stringify(body)
-                            });
-
-                     const responseData = await response.json();
-
-            if (response.ok) {
-                // Mostrar mensaje de éxito después de 3 segundos
-                setTimeout(() => {
-                    statusMessage.textContent = '¡Envío exitoso!';
-                    statusMessage.className = 'success';
-
-                    // Deshabilitar permanentemente el botón de WhatsApp después del envío
-                    whatsappButton.disabled = true;
-                    whatsappButton.style.opacity = "0.5"; // Dar un efecto visual de deshabilitado
-                    whatsappButton.style.cursor = "not-allowed";
-                }, 3000);
-            } else {
-                console.error('Error en la respuesta:', responseData);
-                statusMessage.textContent = `Error: ${responseData.message || 'Problema desconocido'}`;
-                statusMessage.className = 'error';
-                sendMessageButton.disabled = false;
-            }
-        } catch (error) {
-            console.error('Error en la solicitud:', error);
-            statusMessage.textContent = `Error en la solicitud: ${error.message}`;
-            statusMessage.className = 'error';
-            sendMessageButton.disabled = false;
-        }
-    });
-</script>
-
-<script>
-    // Ocultar botones si la URL contiene "sharelink=1"
-    var whatsappButton = document.getElementById('whatsappButton');
-    var impresoraButton = document.getElementById('impresoraButton');
-    var currentURL = window.location.href;
-
-    if (currentURL.indexOf('sharelink=1') !== -1) {
-        whatsappButton.style.display = 'none';
-        impresoraButton.style.display = 'none';
-    }
-
-    console.log(`Teléfono obtenido: ${telefono}`);
-</script>
-
-                                   
-
-<!-- <script>
-                          // Abrir ventana emergente para mostrar el ticket y cerrarla al cargar
-                          function abrirTicketPopup() {
-                              const ticketContent = `
-                                  <!DOCTYPE html>
-                                  <html lang="es">
-                                  <head>
-                                      <meta charset="UTF-8">
-                                      <meta name="viewport" content="width=device-width, initial-scale=1.0">
-                                      <title>Ticket</title>
-                                      <style>${document.querySelector('style').innerHTML}</style>
-                                  </head>
-                                  <body>${document.body.innerHTML}</body>
-                                  </html>
-                              `;
-
-                              // Crear la ventana emergente con un tamaño predefinido
-                              const popupWindow = window.open('', '_blank', 'width=400,height=600,scrollbars=yes,resizable=yes');
-
-                              // Calcular la posición para centrarla
-                              const width = 600;
-                              const height = 800;
-                              const left = (window.innerWidth - width) / 2;
-                              const top = (window.innerHeight - height) / 2;
-
-                              // Configurar la posición y tamaño de la ventana emergente
-                              popupWindow.resizeTo(width, height);
-                              popupWindow.moveTo(left, top);
-
-                              // Escribir el contenido HTML en la ventana emergente
-                              popupWindow.document.write(ticketContent);
-                              popupWindow.document.close();
-
-                              // Cerrar la ventana principal
-                              window.close();
-                          }
-
-                          // Ejecutar la función inmediatamente al cargar la página
-                          window.onload = abrirTicketPopup;
-                        </script> -->
-              </body>
+  <!-- Enlace al archivo JavaScript -->
+  <script src="script.js"></script>
+</body>
 </html>
