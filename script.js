@@ -327,11 +327,11 @@
                           // Generar código QR desde parámetro 'qr'
                           document.addEventListener("DOMContentLoaded", function () {
                             const params = new URLSearchParams(window.location.search);
-                            const qr = params.has('qr') ? params.get('qr') : "0000";
+                            const cod = params.has('cod') ? params.get('cod') : "0000";
 
                             const qrElement = new QRious({
                               element: document.getElementById('qr-code'),
-                              value: qr,
+                              value: cod,
                               size: 100
                             });
                           });
