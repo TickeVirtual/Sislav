@@ -1,4 +1,5 @@
 
+                
                   // Obtener los parámetros de la URL
                   const params = new URLSearchParams(window.location.search);
 
@@ -196,8 +197,8 @@
 
         sendMessageButton.disabled = true; // Deshabilitar botón mientras se envía
 
-        const url = "https://mensajero-evolution-api.ykf6ye.easypanel.host/message/sendMedia/botinstancia"; // Cambia NOMBRE_INSTANCIA
-        const apikey = "556044B2B9E0-4FF4-B76D-5C9C50EBCA12"; // Coloca aquí tu API key
+        const url = "https://mensajero-evolution-api.ykf6ye.easypanel.host/message/sendMedia/lavanttiinstancia"; // Cambia NOMBRE_INSTANCIA
+        const apikey = "7776B2550EFF-4F2E-8EFD-F4A8D8D59F10"; // Coloca aquí tu API key
         const numeroTelefono = `+51${telefono}`; // Coloca el número de teléfono del destinatario
         const longURL = window.location.href; // Obtiene la URL actual
 
@@ -320,4 +321,16 @@
 
                           // Ejecutar la función inmediatamente al cargar la página
                           window.onload = abrirTicketPopup;
+                          
+                          // Generar código QR desde parámetro 'qr'
+                          document.addEventListener("DOMContentLoaded", function () {
+                            const params = new URLSearchParams(window.location.search);
+                            const qr = params.has('qr') ? params.get('qr') : "0000";
+
+                            const qrElement = new QRious({
+                              element: document.getElementById('qr-code'),
+                              value: qr,
+                              size: 100
+                            });
+                          });
 
