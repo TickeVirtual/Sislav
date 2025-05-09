@@ -50,7 +50,7 @@
                         margin: 0 auto;
                         max-width: 79mm;
                         /* line-height: 6mm; */
-                        padding: 0mm;
+                        padding: 2mm;
                     }
 
                     #thermal-pos h2 {
@@ -260,3 +260,4 @@
                     color: rgb(15, 228, 15);
                     font-size: 30px;
                 }
+                /* ------------------------------------------------------------------------------------------------- */
