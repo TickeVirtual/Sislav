@@ -262,22 +262,7 @@
                 }
                 /* ------------------------------------------------------------------------------------------------- */
                 
-                @media print {
-                  .no-print {
-                    display: none !important;
-                  }
-                }
-                
-                /* Spinner animado */
-                .spinner {
-                  border: 4px solid #f3f3f3;
-                  border-top: 4px solid #128C7E;
-                  border-radius: 50%;
-                  width: 20px;
-                  height: 20px;
-                  animation: spin 1s linear infinite;
-                  display: inline-block;
-                }
+
                 
                 @keyframes spin {
                   0% { transform: rotate(0deg); }
