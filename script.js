@@ -1,6 +1,4 @@
-
-                
-                  // Obtener los parámetros de la URL
+ // Obtener los parámetros de la URL
                   const params = new URLSearchParams(window.location.search);
 
                   // Obtener los valores de los parámetros
@@ -191,13 +189,12 @@
         const statusMessage = document.getElementById('statusMessage');
         const sendMessageButton = document.getElementById('sendMessageButton');
         const whatsappButton = document.getElementById('whatsappButton');
-        const loader = document.getElementById('loader');
 
         // Mostrar mensaje de carga
-        loader.style.display = 'block';
         statusMessage.style.display = 'block';
         statusMessage.textContent = 'Enviando mensaje...';
         statusMessage.className = 'loading';
+
         sendMessageButton.disabled = true; // Deshabilitar botón mientras se envía
 
         const url = "https://mensajero-evolution-api.ykf6ye.easypanel.host/message/sendMedia/botinstancia"; // Cambia NOMBRE_INSTANCIA
@@ -252,7 +249,7 @@
             if (response.ok) {
                 // Mostrar mensaje de éxito después de 3 segundos
                 setTimeout(() => {
-                    statusMessage.textContent = '✅¡Envío exitoso!';
+                    statusMessage.textContent = '¡Envío exitoso!';
                     statusMessage.className = 'success';
 
                     // Deshabilitar permanentemente el botón de WhatsApp después del envío
