@@ -285,44 +285,7 @@
 
     console.log(`Teléfono obtenido: ${telefono}`);
 
-                          // Abrir ventana emergente para mostrar el ticket y cerrarla al cargar
-                          function abrirTicketPopup() {
-                              const ticketContent = `
-                                  <!DOCTYPE html>
-                                  <html lang="es">
-                                  <head>
-                                      <meta charset="UTF-8">
-                                      <meta name="viewport" content="width=device-width, initial-scale=1.0">
-                                      <title>Ticket</title>
-                                      <style>${document.querySelector('style').innerHTML}</style>
-                                  </head>
-                                  <body>${document.body.innerHTML}</body>
-                                  </html>
-                              `;
-
-                              // Crear la ventana emergente con un tamaño predefinido
-                              const popupWindow = window.open('', '_blank', 'width=400,height=600,scrollbars=yes,resizable=yes');
-
-                              // Calcular la posición para centrarla
-                              const width = 600;
-                              const height = 800;
-                              const left = (window.innerWidth - width) / 2;
-                              const top = (window.innerHeight - height) / 2;
-
-                              // Configurar la posición y tamaño de la ventana emergente
-                              popupWindow.resizeTo(width, height);
-                              popupWindow.moveTo(left, top);
-
-                              // Escribir el contenido HTML en la ventana emergente
-                              popupWindow.document.write(ticketContent);
-                              popupWindow.document.close();
-
-                              // Cerrar la ventana principal
-                              window.close();
-                          }
-
-                          // Ejecutar la función inmediatamente al cargar la página
-                          window.onload = abrirTicketPopup;
+     
                           
                           // Generar código QR desde parámetro 'qr'
                           document.addEventListener("DOMContentLoaded", function () {
