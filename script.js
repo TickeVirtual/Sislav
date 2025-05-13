@@ -6,6 +6,7 @@
                   // Obtener los valores de los parámetros
                   var nro_boleta = params.has('boleta') ? params.get('boleta') : "---";
                   var nombre_cliente = params.has('cliente') ? params.get('cliente') : "==Cliente==";
+                  var usuario = params.has('usuario') ? params.get('usuario') : "==USUARIO==";
                   var puntos = params.has('puntos') ? params.get('puntos') : "0";
                   var telefono = params.has('telefono') ? params.get('telefono') : "==Cliente==";
                   var codigo_pais = params.has('codigo_pais') ? params.get('codigo_pais') : "+";
@@ -136,6 +137,7 @@
                           var nroBoletaElement = document.getElementById("nro_boleta_id").textContent = nro_boleta;
                           var fechaElement = document.getElementById("fecha").textContent = fecha;
                           var nombre_clientElement = document.getElementById("nombre_client").textContent = nombre_cliente;
+                          var usuarioElement = document.getElementById("usuario").textContent = usuario;
                           var puntosElement = document.getElementById("puntos").textContent = puntos;
                           var fecha_entregaElement = document.getElementById("fecha_entrega").textContent = fecha_entrega;
                           var totalElement = document.getElementById("total");totalElement.textContent = parseFloat(total).toFixed(2);
