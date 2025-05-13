@@ -336,3 +336,37 @@
                             });
                           });
 
+                        document.getElementById("sendMessageButton").addEventListener("click", function (e) {
+                          e.preventDefault();
+                        
+                          const wspBtn = this;
+                          const statusContainer = document.getElementById("wspStatusMessage");
+                          const textElement = document.getElementById("wspText");
+                          const spinnerElement = document.getElementById("spinner");
+                        
+                          const telefono = "51961100231"; // Reemplaza por tu número real si es diferente
+                          const url = document.getElementById("url").value || window.location.href;
+                          const mensaje = encodeURIComponent(`Hola, te comparto el ticket: ${url}`);
+                          const link = `https://wa.me/${telefono}?text=${mensaje}`;
+                        
+                          // Mostrar mensaje y spinner
+                          wspBtn.style.pointerEvents = "none";
+                          textElement.textContent = "Enviando mensaje por WhatsApp...";
+                          spinnerElement.className = "spinner";
+                        
+                          // Simular espera y abrir WhatsApp
+                          setTimeout(() => {
+                            window.open(link, "_blank");
+                        
+                            // Cambiar mensaje final
+                            textElement.textContent = "Mensaje enviado. Si no se abrió WhatsApp, inténtalo nuevamente.";
+                            spinnerElement.className = "";
+                        
+                            // Rehabilitar botón después de 4 segundos
+                            setTimeout(() => {
+                              wspBtn.style.pointerEvents = "auto";
+                              textElement.textContent = "";
+                            }, 4000);
+                          }, 1000);
+                        });
+
