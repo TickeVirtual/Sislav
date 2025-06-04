@@ -2,34 +2,32 @@
                   const params = new URLSearchParams(window.location.search);
 
                   // Obtener los valores de los parámetros
-                  var nro_boleta = params.has('boleta') ? params.get('boleta') : "---";
-                  var nombre_cliente = params.has('cliente') ? params.get('cliente') : "==Cliente==";
-                  var usuario = params.has('usuario') ? params.get('usuario') : "==USUARIO==";
+                  var nro_boleta = params.has('boleta') ? params.get('boleta') : "10000";
+                  var nombre_cliente = params.has('cliente') ? params.get('cliente') : "NOMBRE CLIENTE";
+                  var usuario = params.has('usuario') ? params.get('usuario') : "USUARIO";
                   var puntos = params.has('puntos') ? params.get('puntos') : "0";
-                  var telefono = params.has('telefono') ? params.get('telefono') : "==Cliente==";
+                  var telefono = params.has('telefono') ? params.get('telefono') : "999999999";
                   var codigo_pais = params.has('codigo_pais') ? params.get('codigo_pais') : "+";
-                  var fecha = params.has('fecha') ? params.get('fecha') : "dd/mm/aaaa hh:mm:ss";
-                  var fecha_entrega = params.has('fecha_entrega') ? params.get('fecha_entrega') : "hh:mm:ss";
-                  var total = params.has('total') ? params.get('total') : "";
-                  var total_a_pagar = params.has('total_a_pagar') ? params.get('total_a_pagar') : " ";
+                  var fecha = params.has('fecha') ? params.get('fecha') : "31/05/2025 10:00:23";
+                  var fecha_entrega = params.has('fecha_entrega') ? params.get('fecha_entrega') : "31/05/2025 10:00:23";
+                  var total = params.has('total') ? params.get('total') : "100";
+                  var total_a_pagar = params.has('total_a_pagar') ? params.get('total_a_pagar') : "50";
                   var descuento = params.has('descuento') ? params.get('descuento') :  '0.00';
-                  var a_cuenta = params.has('a_cuenta') ? params.get('a_cuenta') : " ";
-                  var desc_por_prenda = params.has('desc_por_prenda') ? params.get('desc_por_prenda') : " ";
-                  var pagado_con = params.has('pagado_con') ? params.get('pagado_con') : "--";
-                  var a_cuenta_dos = params.has('a_cuenta_dos') ? params.get('a_cuenta_dos') : " ";
-                  var pagado_con_dos = params.has('pagado_con_dos') ? params.get('pagado_con_dos') : "--";
-                  var porcent_desc = params.has('porcent_desc') ? params.get('porcent_desc') : " ";
-                  var porcent_desc_plata = params.has('porcent_desc_plata') ? params.get('porcent_desc_plata') : " ";
-                  var total_por_pagar = params.has('total_por_pagar') ? params.get('total_por_pagar') : " ";
-                  var estado = params.has('estado') ? params.get('estado') : "--";
-                  var total_prendas = params.has('total_prendas') ? params.get('total_prendas') : "--";
-
-                        
-                  var cantidades = params.has('cantidades') ? params.get('cantidades') : "";
-                  var descripciones = params.has('servicios') ? params.get('servicios') : "";
-                  var detalle = params.has('detalles') ? params.get('detalles') : "";
-                  var p_units = params.has('p_unit') ? params.get('p_unit') : "";
-                  var subtotal = params.has('subtotal') ? params.get('subtotal') : "";
+                  var a_cuenta = params.has('a_cuenta') ? params.get('a_cuenta') : "0";
+                  var desc_por_prenda = params.has('desc_por_prenda') ? params.get('desc_por_prenda') : "0";
+                  var pagado_con = params.has('pagado_con') ? params.get('pagado_con') : "0";
+                  var a_cuenta_dos = params.has('a_cuenta_dos') ? params.get('a_cuenta_dos') : "0";
+                  var pagado_con_dos = params.has('pagado_con_dos') ? params.get('pagado_con_dos') : "0";
+                  var porcent_desc = params.has('porcent_desc') ? params.get('porcent_desc') : "0";
+                  var porcent_desc_plata = params.has('porcent_desc_plata') ? params.get('porcent_desc_plata') : "0";
+                  var total_por_pagar = params.has('total_por_pagar') ? params.get('total_por_pagar') : "0";
+                  var estado = params.has('estado') ? params.get('estado') : "PAGADO";
+                  var total_prendas = params.has('total_prendas') ? params.get('total_prendas') : "10";      
+                  var cantidades = params.has('cantidades') ? params.get('cantidades') : "10";
+                  var descripciones = params.has('servicios') ? params.get('servicios') : "AL AGUA: SABANAS 2 PLZ Ploma cuadritos blancos basement home";
+                  var detalle = params.has('detalles') ? params.get('detalles') : "TERNO";
+                  var p_units = params.has('p_unit') ? params.get('p_unit') : "15";
+                  var subtotal = params.has('subtotal') ? params.get('subtotal') : "150";
                   
                   //Formato de 2 decimales
                   //total = parseFloat(total).toLocaleString('es-ES', { minimumFractionDigits: 2 });
@@ -68,10 +66,16 @@
                                       // Calcula el subtotal para el servicio actual
                           var subtotal = row.cantidad * parseFloat(row.precio_unit);
                               newRow.innerHTML = `
-                                <td class="item" style="text-align: right;">${row.cantidad}</td>
-                                <td class="item" style="text-align: right;">${row.descripcion}</td>
-                                <td class="item" style="text-align: right;">${row.precio_unit}</td> <!-- Alinea a la derecha -->
-                                <td class="item" style="text-align: right;">${subtotal.toFixed(2)}</td> <!-- Alinea a la derecha -->
+                                <td class="itemtab" style="text-align: left; font-size: 0.5mm;">
+                                ${row.cantidad}
+                                </td>
+                                <td class="itemtab" style="text-align: right; font-size: 0.5mm;">
+                                ${row.descripcion} ${parseFloat(row.precio_unit).toFixed(2)}
+                                </td>
+                                <td class="itemtab" style="text-align: right; font-size: 0.5mm;">
+                                ${subtotal.toFixed(2)}
+                                </td>
+
                             `;
 
                             tablaBody.appendChild(newRow);
@@ -197,8 +201,8 @@
 
         sendMessageButton.disabled = true; // Deshabilitar botón mientras se envía
 
-        const url = "https://mensajero-evolution-api.ykf6ye.easypanel.host/message/sendMedia/botinstancia"; // Cambia NOMBRE_INSTANCIA
-        const apikey = "9E3F31BC6102-4E56-BA66-2B3F3637A9D7"; // Coloca aquí tu API key
+        const url = "https://mensajero-evolution-api.ykf6ye.easypanel.host/message/sendMedia/lavandiasurcoinstancia"; // Cambia NOMBRE_INSTANCIA
+        const apikey = "63F783149485-491F-A852-0EAE47DE2920"; // Coloca aquí tu API key
         const numeroTelefono = `+51${telefono}`; // Coloca el número de teléfono del destinatario
         const longURL = window.location.href; // Obtiene la URL actual
 
@@ -216,14 +220,14 @@
             const index = (hora + minuto + segundo) % mensajes.length;
 
             // Generar el mensaje final
-            const captionMessage = `*Ticket de LAVANDERIA*\n\n${mensajes[index].replace("{link}", shortedURL)}`;
+            const captionMessage = `*LAVANDIA*\n\n${mensajes[index].replace("{link}", shortedURL)}`;
 
                      const body = {
                       "number": numeroTelefono,
                       "mediatype": "image",
                       "mimetype": "image/png",
                       "caption":captionMessage,
-                      "media": "https://iili.io/2aLNHDg.png",
+                      "media": "https://iili.io/F9jn26P.png",
                       "fileName": "Imagem.png",
                       "delay": 1200,
                       "quoted": {
