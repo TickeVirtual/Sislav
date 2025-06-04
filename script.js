@@ -27,7 +27,7 @@
       var descripciones = params.has('servicios') ? params.get('servicios') : "AL AGUA: SABANAS 2 PLZ Ploma cuadritos blancos basement home";
       var detalle = params.has('detalles') ? params.get('detalles') : "TERNO";
       var p_units = params.has('p_unit') ? params.get('p_unit') : "15";
-      var subtotal = params.has('subtotal') ? params.get('subtotal').split(",") : ["0"];
+      var subtotal = params.has('subtotal') ? params.get('subtotal') : "150";
       
       //Formato de 2 decimales
       //total = parseFloat(total).toLocaleString('es-ES', { minimumFractionDigits: 2 });
@@ -64,7 +64,7 @@
                           var newRow = document.createElement("tr");
                               newRow.className = "table-item";
                                       // Calcula el subtotal para el servicio actual
-                          var subtotal = parseFloat(row.subtotal).toFixed(2);
+                          var subtotal = row.cantidad * parseFloat(row.precio_unit);
                             newRow.innerHTML = `
                                 <td class="itemtab" style="text-align: left; font-size: 0.5mm;">
                                     ${row.cantidad}
