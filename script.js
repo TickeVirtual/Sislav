@@ -64,7 +64,8 @@
                           var newRow = document.createElement("tr");
                               newRow.className = "table-item";
                                       // Calcula el subtotal para el servicio actual
-                          var subtotal = row.cantidad * parseFloat(row.precio_unit);
+                          var subtotalCalculado = row.cantidad * parseFloat(row.precio_unit);
+                          var subtotal = redondearPersonalizado(subtotalCalculado);
                               newRow.innerHTML = `
                                 <td class="itemtab" style="text-align: left; font-size: 0.5mm;">
                                 ${row.cantidad}
