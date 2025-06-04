@@ -289,16 +289,28 @@
 
      
                           
-                          // Generar código QR desde parámetro 'qr'
-                          document.addEventListener("DOMContentLoaded", function () {
-                            const params = new URLSearchParams(window.location.search);
-                            const qr = params.has('qr') ? params.get('qr') : "sddsd12";
-                          
-                            const qrElement = new QRious({
-                              element: document.getElementById('qr-code'),
-                              value: qr,
-                              size: 100
-                            });
-                          });
+     // Generar código QR desde parámetro 'qr'
+     document.addEventListener("DOMContentLoaded", function () {
+       const params = new URLSearchParams(window.location.search);
+       const qr = params.has('qr') ? params.get('qr') : "sddsd12";
+     
+       const qrElement = new QRious({
+         element: document.getElementById('qr-code'),
+         value: qr,
+         size: 100
+       });
+     });
+// Redondear a la décima más cercana (múltiplos de 0.10)
+function redondearPersonalizado(valor) {
+    let entero = Math.floor(valor); 
+    let decimales = valor - entero;
+
+    // Redondear a la décima más cercana (múltiplos de 0.10)
+    let decima = Math.round(decimales * 10) / 10;
+
+    let resultado = entero + decima;
+    return resultado.toFixed(2);
+}
+
 
                         
