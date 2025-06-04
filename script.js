@@ -1,44 +1,44 @@
- // Obtener los parámetros de la URL
-      const params = new URLSearchParams(window.location.search);
+// Obtener los parámetros de la URL
+                  const params = new URLSearchParams(window.location.search);
 
-      // Obtener los valores de los parámetros
-      var nro_boleta = params.has('boleta') ? params.get('boleta') : "10000";
-      var nombre_cliente = params.has('cliente') ? params.get('cliente') : "NOMBRE CLIENTE";
-      var usuario = params.has('usuario') ? params.get('usuario') : "USUARIO";
-      var puntos = params.has('puntos') ? params.get('puntos') : "0";
-      var telefono = params.has('telefono') ? params.get('telefono') : "999999999";
-      var codigo_pais = params.has('codigo_pais') ? params.get('codigo_pais') : "+";
-      var fecha = params.has('fecha') ? params.get('fecha') : "31/05/2025 10:00:23";
-      var fecha_entrega = params.has('fecha_entrega') ? params.get('fecha_entrega') : "31/05/2025 10:00:23";
-      var total = params.has('total') ? params.get('total') : "100";
-      var total_a_pagar = params.has('total_a_pagar') ? params.get('total_a_pagar') : "50";
-      var descuento = params.has('descuento') ? params.get('descuento') :  '0.00';
-      var a_cuenta = params.has('a_cuenta') ? params.get('a_cuenta') : "0";
-      var desc_por_prenda = params.has('desc_por_prenda') ? params.get('desc_por_prenda') : "0";
-      var pagado_con = params.has('pagado_con') ? params.get('pagado_con') : "0";
-      var a_cuenta_dos = params.has('a_cuenta_dos') ? params.get('a_cuenta_dos') : "0";
-      var pagado_con_dos = params.has('pagado_con_dos') ? params.get('pagado_con_dos') : "0";
-      var porcent_desc = params.has('porcent_desc') ? params.get('porcent_desc') : "0";
-      var porcent_desc_plata = params.has('porcent_desc_plata') ? params.get('porcent_desc_plata') : "0";
-      var total_por_pagar = params.has('total_por_pagar') ? params.get('total_por_pagar') : "0";
-      var estado = params.has('estado') ? params.get('estado') : "PAGADO";
-      var total_prendas = params.has('total_prendas') ? params.get('total_prendas') : "10";      
-      var cantidades = params.has('cantidades') ? params.get('cantidades') : "10";
-      var descripciones = params.has('servicios') ? params.get('servicios') : "AL AGUA: SABANAS 2 PLZ Ploma cuadritos blancos basement home";
-      var detalle = params.has('detalles') ? params.get('detalles') : "TERNO";
-      var p_units = params.has('p_unit') ? params.get('p_unit') : "15";
-      var subtotal = params.has('subtotal') ? params.get('subtotal') : "150";
-      
-      //Formato de 2 decimales
-      //total = parseFloat(total).toLocaleString('es-ES', { minimumFractionDigits: 2 });
-      //descuento = parseFloat(descuento).toLocaleString('es-ES', { minimumFractionDigits: 2 });
-      //subtotal_desc = parseFloat(subtotal_desc).toLocaleString('es-ES', { minimumFractionDigits: 2 });
-      
-      //crea una lista de cada columna a partir de las comas.
-      cantidades = cantidades.split(",");
-      descripciones = descripciones.split(",");
-      detalle = detalle.split(",");
-      p_units = p_units.split(",");
+                  // Obtener los valores de los parámetros
+                  var nro_boleta = params.has('boleta') ? params.get('boleta') : "10000";
+                  var nombre_cliente = params.has('cliente') ? params.get('cliente') : "NOMBRE CLIENTE";
+                  var usuario = params.has('usuario') ? params.get('usuario') : "USUARIO";
+                  var puntos = params.has('puntos') ? params.get('puntos') : "0";
+                  var telefono = params.has('telefono') ? params.get('telefono') : "999999999";
+                  var codigo_pais = params.has('codigo_pais') ? params.get('codigo_pais') : "+";
+                  var fecha = params.has('fecha') ? params.get('fecha') : "31/05/2025 10:00:23";
+                  var fecha_entrega = params.has('fecha_entrega') ? params.get('fecha_entrega') : "31/05/2025 10:00:23";
+                  var total = params.has('total') ? params.get('total') : "100";
+                  var total_a_pagar = params.has('total_a_pagar') ? params.get('total_a_pagar') : "50";
+                  var descuento = params.has('descuento') ? params.get('descuento') :  '0.00';
+                  var a_cuenta = params.has('a_cuenta') ? params.get('a_cuenta') : "0";
+                  var desc_por_prenda = params.has('desc_por_prenda') ? params.get('desc_por_prenda') : "0";
+                  var pagado_con = params.has('pagado_con') ? params.get('pagado_con') : "0";
+                  var a_cuenta_dos = params.has('a_cuenta_dos') ? params.get('a_cuenta_dos') : "0";
+                  var pagado_con_dos = params.has('pagado_con_dos') ? params.get('pagado_con_dos') : "0";
+                  var porcent_desc = params.has('porcent_desc') ? params.get('porcent_desc') : "0";
+                  var porcent_desc_plata = params.has('porcent_desc_plata') ? params.get('porcent_desc_plata') : "0";
+                  var total_por_pagar = params.has('total_por_pagar') ? params.get('total_por_pagar') : "0";
+                  var estado = params.has('estado') ? params.get('estado') : "PAGADO";
+                  var total_prendas = params.has('total_prendas') ? params.get('total_prendas') : "10";      
+                  var cantidades = params.has('cantidades') ? params.get('cantidades') : "10";
+                  var descripciones = params.has('servicios') ? params.get('servicios') : "AL AGUA: SABANAS 2 PLZ Ploma cuadritos blancos basement home";
+                  var detalle = params.has('detalles') ? params.get('detalles') : "TERNO";
+                  var p_units = params.has('p_unit') ? params.get('p_unit') : "15";
+                  var subtotal = params.has('subtotal') ? params.get('subtotal') : "150";
+                  
+                  //Formato de 2 decimales
+                  //total = parseFloat(total).toLocaleString('es-ES', { minimumFractionDigits: 2 });
+                  //descuento = parseFloat(descuento).toLocaleString('es-ES', { minimumFractionDigits: 2 });
+                  //subtotal_desc = parseFloat(subtotal_desc).toLocaleString('es-ES', { minimumFractionDigits: 2 });
+                  
+                  //crea una lista de cada columna a partir de las comas.
+                  cantidades = cantidades.split(",");
+                  descripciones = descripciones.split(",");
+                  detalle = detalle.split(",");
+                  p_units = p_units.split(",");
 
                   //Crea una lista para mostrar en cada fila de la tabla
                   var result = [];
@@ -65,20 +65,18 @@
                               newRow.className = "table-item";
                                       // Calcula el subtotal para el servicio actual
                           var subtotal = row.cantidad * parseFloat(row.precio_unit);
-                            newRow.innerHTML = `
+                              newRow.innerHTML = `
                                 <td class="itemtab" style="text-align: left; font-size: 0.5mm;">
-                                    ${row.cantidad}
+                                ${row.cantidad}
                                 </td>
                                 <td class="itemtab" style="text-align: right; font-size: 0.5mm;">
-                                    ${row.descripcion} ${parseFloat(row.precio_unit).toFixed(2)}
+                                ${row.descripcion} ${parseFloat(row.precio_unit).toFixed(2)}
                                 </td>
                                 <td class="itemtab" style="text-align: right; font-size: 0.5mm;">
-                                    ${subtotal}
+                                ${subtotal.toFixed(2)}
                                 </td>
+
                             `;
-                        
-                            tablaBody.appendChild(newRow);
-                        });
 
                             tablaBody.appendChild(newRow);
                               });
@@ -302,5 +300,3 @@
                               size: 100
                             });
                           });
-
-                        
