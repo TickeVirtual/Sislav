@@ -6,7 +6,7 @@
                       }
                     *{
                         font-family: tahoma, Helvetica, sans-serif; /* tipo de letra de todo el ticket; */
-                        font-size: 2.5mm !important;
+                        font-size: 3.5mm !important;
                         line-height: 1 !important;
                       }
 
@@ -28,8 +28,12 @@
 
                     .nro_boleta {
                         margin: 0;
-                        font-size: 5mm !important;
+                        font-size: 10mm !important;
                     }
+                    .font-small {
+                      font-size: 0.5mm;
+                    }
+                    
 
                     .fecha_recepcion {
                         margin: 0;
@@ -132,7 +136,7 @@
                     }
 
                     .table-header {
-                        text-align: right;
+                        text-align: center;
                         border-top: groove; /* Raya superior de encabezado de tabla de detalles; */
                         border-bottom: groove; /* Raya inferior de encabezado de tabla de detalles; */ 
                       }
@@ -264,4 +268,3 @@
                 
 
                 
-
