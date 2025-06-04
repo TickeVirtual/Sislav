@@ -74,7 +74,7 @@
                                 ${row.descripcion} ${parseFloat(row.precio_unit).toFixed(2)}
                                 </td>
                                 <td class="itemtab" style="text-align: right; font-size: 0.5mm;">
-                                $${subtotal}
+                                ${subtotal}
                                 </td>                             
 
                             `;
