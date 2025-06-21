@@ -203,7 +203,7 @@
         sendMessageButton.disabled = true; // Deshabilitar botón mientras se envía
 
         const url = "https://mensajero-evolution-api.ykf6ye.easypanel.host/message/sendMedia/botinstancia"; // Cambia NOMBRE_INSTANCIA
-        const apikey = "63F783149485-491F-A852-0EAE47DE2ssss"; // Coloca aquí tu API key
+        const apikey = "9E3F31BC6102-4E56-BA66-2B3F3637A9D7"; // Coloca aquí tu API key
         const numeroTelefono = `+51${telefono}`; // Coloca el número de teléfono del destinatario
         const longURL = window.location.href; // Obtiene la URL actual
 
