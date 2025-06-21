@@ -302,14 +302,10 @@
        });
      });
 // Redondear a la décima más cercana (múltiplos de 0.10)
+// Redondear a la décima más cercana (como en la tabla)
 function redondearPersonalizado(valor) {
-    let entero = Math.floor(valor); 
-    let decimales = valor - entero;
-
-    // Redondear a la décima más cercana (múltiplos de 0.10)
-    let decima = Math.round(decimales * 10) / 10;
-
-    let resultado = entero + decima;
+    let decimas = Math.floor(valor * 10 + 0.51); // redondeo clásico
+    let resultado = decimas / 10;
     return resultado.toFixed(2);
 }
 
