@@ -1,4 +1,4 @@
-                .m-0 {
+                             .m-0 {
                         margin: 0 !important;
                         font-weight: normal; /* Agrega esta línea para desactivar la negrita */
                         text-align: left;
@@ -237,16 +237,12 @@
                 .hidden {
                     display: none !important;
                 }
+                
+                .hidden-button {
+                  display: none !important;
+              }
 
-                /* CSS para ocultar las imágenes de WhatsAppButton cuando sharelink=1 está presente en la URL */
-                img#sendMessageButton {
-                    display: none;
-                }
 
-                /* CSS para ocultar las imágenes de WhatsAppButton cuando sharelink=1 está presente en la URL */
-                img#impresoraButton {
-                    display: none;
-                }
           
                 #statusMessage {
                     margin-top: 20px;
@@ -256,7 +252,7 @@
                 }
 
                 .loading {
-                    color: rgb(255, 60, 0);
+                    color: rgb(102, 255, 0);
                     font-size: 20px;
                 }
 
@@ -268,3 +264,4 @@
                 
 
                 
+
