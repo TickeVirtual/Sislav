@@ -9,6 +9,9 @@
                         font-size: 3.5mm !important;
                         line-height: 1 !important;
                       }
+                        .button-container.hidden-button {
+                            display: none !important;
+                        }
 
 
                       /* Sobrescribir el tamaño de fuente solo para "Por Pagar" */
