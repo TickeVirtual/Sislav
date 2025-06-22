@@ -221,14 +221,14 @@
             const index = (hora + minuto + segundo) % mensajes.length;
 
             // Generar el mensaje final
-            const captionMessage = `*LAVANDIA*\n\n${mensajes[index].replace("{link}", shortedURL)}`;
+            const captionMessage = `*LAVANDERIA*\n\n${mensajes[index].replace("{link}", shortedURL)}`;
 
                      const body = {
                       "number": numeroTelefono,
                       "mediatype": "image",
                       "mimetype": "image/png",
                       "caption":captionMessage,
-                      "media": "https://iili.io/FdbmN6P.png",
+                      "media": "https://iili.io/2HQbKS1.png",
                       "fileName": "Imagem.png",
                       "delay": 1200,
                       "quoted": {
