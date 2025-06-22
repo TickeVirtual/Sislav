@@ -6,7 +6,7 @@
                   var nombre_cliente = params.has('cliente') ? params.get('cliente') : "NOMBRE CLIENTE";
                   var usuario = params.has('usuario') ? params.get('usuario') : "USUARIO";
                   var puntos = params.has('puntos') ? params.get('puntos') : "0";
-                  var telefono = params.has('telefono') ? params.get('telefono') : "999999999";
+                  var telefono = params.has('telefono') ? params.get('telefono') : "931200353";
                   var codigo_pais = params.has('codigo_pais') ? params.get('codigo_pais') : "+";
                   var fecha = params.has('fecha') ? params.get('fecha') : "31/05/2025 10:00:23";
                   var fecha_entrega = params.has('fecha_entrega') ? params.get('fecha_entrega') : "31/05/2025 10:00:23";
@@ -23,10 +23,10 @@
                   var total_por_pagar = params.has('total_por_pagar') ? params.get('total_por_pagar') : "0";
                   var estado = params.has('estado') ? params.get('estado') : "PAGADO";
                   var total_prendas = params.has('total_prendas') ? params.get('total_prendas') : "10";      
-                  var cantidades = params.has('cantidades') ? params.get('cantidades') : "10";
+                  var cantidades = params.has('cantidades') ? params.get('cantidades') : "2.55";
                   var descripciones = params.has('servicios') ? params.get('servicios') : "AL AGUA: SABANAS 2 PLZ Ploma cuadritos blancos basement home";
                   var detalle = params.has('detalles') ? params.get('detalles') : "TERNO";
-                  var p_units = params.has('p_unit') ? params.get('p_unit') : "15";
+                  var p_units = params.has('p_unit') ? params.get('p_unit') : "3";
                   var subtotal = params.has('subtotal') ? params.get('subtotal') : "150";
                   
                   //Formato de 2 decimales
@@ -161,10 +161,10 @@
                       var currentURL = window.location.href;
 
                       // Verifica si la URL contiene "sharelink=1" y oculta el botón si es así
-                      if (currentURL.indexOf('sharelink=1') !== -1) {
-                          sendMessageButton.style.display = 'none';
-                          impresoraButton.style.display = 'none';
-                      }
+                      if (currentURL.includes('sharelink=1')) {
+                        document.getElementById('sendMessageButton').classList.add('hidden-button');
+                        document.getElementById('impresoraButton').classList.add('hidden-button');
+                    }
 
     // Función para acortar la URL
     async function shortURL(url) {
@@ -197,7 +197,7 @@
 
         // Mostrar mensaje de carga
         statusMessage.style.display = 'block';
-        statusMessage.textContent = 'Enviando mensaje...';
+        statusMessage.textContent = 'Enviando Whatsapp...';
         statusMessage.className = 'loading';
 
         sendMessageButton.disabled = true; // Deshabilitar botón mientras se envía
@@ -228,7 +228,7 @@
                       "mediatype": "image",
                       "mimetype": "image/png",
                       "caption":captionMessage,
-                      "media": "https://iili.io/F9jn26P.png",
+                      "media": "https://iili.io/FdbmN6P.png",
                       "fileName": "Imagem.png",
                       "delay": 1200,
                       "quoted": {
@@ -264,7 +264,7 @@
                 }, 3000);
             } else {
                 console.error('Error en la respuesta:', responseData);
-                statusMessage.textContent = `Error: ${responseData.message || 'Problema desconocido'}`;
+                statusMessage.textContent = `Error: ${responseData.message || 'al parecer el numero no tiene whatsapp'}`;
                 statusMessage.className = 'error';
                 sendMessageButton.disabled = false;
             }
