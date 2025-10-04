@@ -140,6 +140,7 @@ async function sendWhatsAppMessage() {
 
 /* FINALIZA EL CODIGO DE ACORTAR URL PERSONALIZADO */
 
+
                             // Función para imprimir el ticket
                         function printTicket() {
                           window.print();
@@ -216,8 +217,8 @@ async function sendWhatsAppMessage() {
 
         sendMessageButton.disabled = true; // Deshabilitar botón mientras se envía
 
-        const url = "https://mensajero-evolution-api.ykf6ye.easypanel.host/message/sendMedia/jhonpersonalinstancia"; // Cambia NOMBRE_INSTANCIA
-        const apikey = "0B2988E6E314-4BF0-9B5C-8C4F65B6954E"; // Coloca aquí tu API key
+        const url = "https://mensajero-evolution-api.ykf6ye.easypanel.host/message/sendMedia/jhonpersonalinstanciaa"; // Cambia NOMBRE_INSTANCIA
+        const apikey = "79FD69C4D188-4338-B417-8A9BAC82846C"; // Coloca aquí tu API key
         const numeroTelefono = `+51${telefono}`; // Coloca el número de teléfono del destinatario
         const longURL = window.location.href; // Obtiene la URL actual
 
@@ -325,5 +326,6 @@ function redondearPersonalizado(valor) {
 
 
                         
+
 
 
