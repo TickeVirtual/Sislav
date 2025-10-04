@@ -95,26 +95,25 @@
 async function shortURL(urlLarga) {
     try {
         const formData = new FormData();
-        formData.append('url', urlLarga);
+        formData.append("url", urlLarga);
 
-        const response = await fetch('https://miticket.sysventa.com/acortar.php', {
-            method: 'POST',
+        const response = await fetch("https://miticket.sysventa.com/acortar.php", {
+            method: "POST",
             body: formData
         });
 
-        if (!response.ok) {
-            throw new Error("Error al conectar con el servidor del acortador");
-        }
+        const texto = await response.text();
+        console.log("Respuesta del servidor:", texto);
 
-        // La respuesta ya es texto plano (el link corto)
-        const shortedURL = (await response.text()).trim();
-        return shortedURL;
+        if (!response.ok) throw new Error("Error HTTP: " + response.status);
 
+        return texto.trim(); // <- devuelve el link corto limpio
     } catch (error) {
-        console.error("Error al acortar la URL:", error);
+        console.error("Error en la solicitud:", error);
         throw error;
     }
 }
+
 
 // Enviar mensaje de WhatsApp usando la URL corta
 async function sendWhatsAppMessage() {
@@ -342,6 +341,7 @@ function redondearPersonalizado(valor) {
 
 
                         
+
 
 
 
