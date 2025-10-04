@@ -182,14 +182,30 @@ async function sendWhatsAppMessage() {
                     }
 
     // Función para acortar la URL
-    async function shortURL(url) {
-        const response = await fetch(`https://tinyurl.com/api-create.php?url=${encodeURIComponent(url)}`);
-        if (response.ok) {
-            return await response.text();
-        } else {
-            throw new Error("Error al acortar la URL");
+// Función para acortar URL usando tu propio servidor
+async function shortURL(urlLarga) {
+    try {
+        const formData = new FormData();
+        formData.append('url', urlLarga);
+
+        const response = await fetch('https://miticket.sysventa.com/acortador.php', {
+            method: 'POST',
+            body: formData
+        });
+
+        if (!response.ok) {
+            throw new Error("Error al conectar con el servidor del acortador");
         }
+
+        // La respuesta ya es texto plano (el link corto)
+        const shortedURL = (await response.text()).trim();
+        return shortedURL;
+
+    } catch (error) {
+        console.error("Error al acortar la URL:", error);
+        throw error;
     }
+}
 
     // Lista de mensajes predefinidos
    const mensajes = [
@@ -326,6 +342,7 @@ function redondearPersonalizado(valor) {
 
 
                         
+
 
 
 
