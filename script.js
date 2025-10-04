@@ -188,7 +188,7 @@ async function shortURL(urlLarga) {
         const formData = new FormData();
         formData.append('url', urlLarga);
 
-        const response = await fetch('https://miticket.sysventa.com/acortador.php', {
+        const response = await fetch('https://miticket.sysventa.com/acortar.php', {
             method: 'POST',
             body: formData
         });
@@ -342,6 +342,7 @@ function redondearPersonalizado(valor) {
 
 
                         
+
 
 
 
