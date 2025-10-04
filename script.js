@@ -89,42 +89,56 @@
                                 });
 
 
-                       /*(INICIA EL CODIGO DE ACORTAR URL) */
-      
-                        // Función para acortar la URL
-                        async function shortURL(url) {
-                            const response = await fetch(`https://tinyurl.com/api-create.php?url=${encodeURIComponent(url)}`);
-                            if (response.ok) {
-                                return await response.text();
-                            } else {
-                                throw new Error("Error al acortar la URL");
-                            }
-                        }
+/* (INICIA EL CODIGO DE ACORTAR URL PERSONALIZADO) */
 
-                        // Modificamos la función para enviar el mensaje de WhatsApp
-                        async function sendWhatsAppMessage() {
-                            var currentURL = window.location.href;
-                            
-                            try {
-                                // Acortamos la URL actual
-                                var shortedURL = await shortURL(currentURL);
-                                
-                                var message = 'Hola!! somos de la lavandería ,  adjuntamos su ticket de atención virtual. Click en el link para ver el ticket 👇 ' +     
-                                shortedURL;
-                                
-                                var whatsappLink = 'https://api.whatsapp.com/send?phone=' + codigo_pais + telefono + '&text=' + encodeURIComponent(message)+'?sharelink=1';
-                                
-                                window.open(whatsappLink, '_blank');
-                            } catch (error) {
-                                console.error("Error al acortar la URL:", error);
-                                alert("Hubo un error al acortar la URL. Por favor, intente nuevamente.");
-                            }
-                        }
+// Función para acortar URL usando tu propio servidor
+async function shortURL(urlLarga) {
+    try {
+        const formData = new FormData();
+        formData.append('url', urlLarga);
 
-                        // Asignamos la nueva función al evento click del botón
-                        //document.getElementById('whatsappButton').addEventListener('click', sendWhatsAppMessage);
+        const response = await fetch('https://miticket.sysventa.com/acortador.php', {
+            method: 'POST',
+            body: formData
+        });
 
-                        /* FINALIZA EL CODIGO DE ACORTAR URL */
+        if (!response.ok) {
+            throw new Error("Error al conectar con el servidor del acortador");
+        }
+
+        // La respuesta ya es texto plano (el link corto)
+        const shortedURL = (await response.text()).trim();
+        return shortedURL;
+
+    } catch (error) {
+        console.error("Error al acortar la URL:", error);
+        throw error;
+    }
+}
+
+// Enviar mensaje de WhatsApp usando la URL corta
+async function sendWhatsAppMessage() {
+    var currentURL = window.location.href;
+
+    try {
+        // 1️⃣ Acortamos la URL actual
+        var shortedURL = await shortURL(currentURL);
+
+        // 2️⃣ Armamos el mensaje
+        var message = `Hola!! somos de la lavandería, adjuntamos su ticket de atención virtual 👇\n${shortedURL}`;
+
+        // 3️⃣ Creamos el enlace de WhatsApp
+        var whatsappLink = 'https://api.whatsapp.com/send?phone=' + codigo_pais + telefono + '&text=' + encodeURIComponent(message) + '&sharelink=1';
+
+        // 4️⃣ Abrimos WhatsApp
+        window.open(whatsappLink, '_blank');
+    } catch (error) {
+        console.error("Error al acortar la URL:", error);
+        alert("Hubo un error al acortar la URL. Por favor, intente nuevamente.");
+    }
+}
+
+/* FINALIZA EL CODIGO DE ACORTAR URL PERSONALIZADO */
 
                             // Función para imprimir el ticket
                         function printTicket() {
@@ -311,4 +325,5 @@ function redondearPersonalizado(valor) {
 
 
                         
+
 
