@@ -263,8 +263,83 @@
                     color: rgb(15, 228, 15);
                     font-size: 30px;
                 }
+
+/* -----------------------------------------
+   🧷 AJUSTES RESPONSIVE PARA CELULARES
+------------------------------------------*/
+@media screen and (max-width: 480px) {
+  /* Hace que el ticket se adapte al ancho del móvil */
+  #thermal-pos {
+    width: 90vw !important;          /* Ancho proporcional a la pantalla */
+    max-width: 320px !important;     /* No se sale de pantalla */
+    margin: auto;
+    padding: 3mm;
+    box-shadow: none !important;     /* Evita el sombreado en móviles */
+  }
+
+  /* Ajuste general del texto */
+  * {
+    font-size: 3.2mm !important;
+    line-height: 1.2 !important;
+  }
+
+  /* Título del ticket (número grande) */
+  .nro_boleta {
+    font-size: 8mm !important;
+  }
+
+  /* Datos del cliente */
+  .nombre-cliente {
+    font-size: 3.5mm !important;
+  }
+
+  /* Evita que la tabla se deforme */
+  table {
+    width: 100%;
+    table-layout: fixed;
+    word-wrap: break-word;
+  }
+
+  /* Ajusta las celdas */
+  th, td {
+    padding: 2px;
+  }
+
+  /* Centra todo correctamente */
+  .ticket, .label, .policy, .info-tienda {
+    text-align: center !important;
+  }
+
+  /* Reduce un poco el mensaje final para que no se corte */
+  .policy {
+    font-size: 2.8mm !important;
+    line-height: 1.3 !important;
+    padding: 2mm !important;
+  }
+
+  /* Evita que los botones se superpongan */
+  .button-container {
+    flex-direction: row;
+    justify-content: center;
+    gap: 1rem;
+  }
+
+  .button-box img {
+    width: 45px !important;
+  }
+}
+
+/* -----------------------------------------
+   🔒 MANTENER ESCALA FIJA EN CELULARES
+------------------------------------------*/
+@viewport {
+  width: device-width;
+  zoom: 1.0;
+}
+
                 /* ------------------------------------------------------------------------------------------------- */
                 
 
                 
+
 
